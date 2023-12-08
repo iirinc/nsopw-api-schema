@@ -1,0 +1,317 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "title": "Search ID",
+            "description": "ID of the search that matches the ID submitted in the query.",
+            "examples": ["000000-0000-0000-00000000000"]
+        },
+        "statusCode": {
+            "type": "integer",
+            "title": "Status Code",
+            "description": "This is the status code of the whole search. If only one jurisdiction is being returned, it should match in the array of jurisdictionStatus.",
+            "examples": [200]
+        },
+        "offenders": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Offender ID",
+                        "description": "Unique ID of the offender for this jurisdiction",
+                        "examples": ["DC1000"]
+                    },
+                    "name": {
+                        "$ref": "#/definitions/nameDef",
+                        "title": "Offender Name",
+                        "description": "This is the legal and primary name of the offender."
+                    },
+                    "aliases": {
+                        "type": "array",
+                        "title": "Offender Aliases",
+                        "description": "Array of aliases used by the offender",
+                        "items": {"$ref": "#/definitions/nameDef"}
+                    },
+                    "gender": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Offender Sex/Gender",
+                        "examples": ["M"],
+                        "enum": [
+                            "M",
+                            "F",
+                            "U"
+                        ],
+                        "description": "The gender of the offender. M for Male, F for Female, and U for Unknown or other."
+                    },
+                    "dob": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Date of Birth",
+                        "examples": ["1900-01-31"],
+                        "format": "date",
+                        "description": "The date of birth of the offender"
+                    },
+                    "locations": {
+                        "type": "array",
+                        "title": "Offender Locations",
+                        "description": "Addresses of the offender",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ],
+                                    "title": "Name of location",
+                                    "description": "Optional name of the location such as company or school name.",
+                                    "examples": ["The White House"]
+                                },
+                                "type": {
+                                    "type": "string",
+                                    "title": "Type of location",
+                                    "examples": ["R"],
+                                    "enum": [
+                                        "R",
+                                        "E",
+                                        "S"
+                                    ],
+                                    "description": "The type of address (R = Residence, S = School, or E = Employment/Work) of the offender's location."
+                                },
+                                "streetAddress": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ],
+                                    "title": "Street Address",
+                                    "description": "The street address of the offender's address including number and direction.",
+                                    "examples": ["1600 Pennsylvania Avenue NW"]
+                                },
+                                "city": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ],
+                                    "title": "City of location",
+                                    "examples": ["Washington"],
+                                    "description": "The city of the offender's location."
+                                },
+                                "county": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ],
+                                    "title": "County of location",
+                                    "examples": ["Fairfax"],
+                                    "description": "The county of the offender's location."
+                                },
+                                "state": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ],
+                                    "title": "State of location",
+                                    "description": "Two letter USPS State Code",
+                                    "examples": ["DC"]
+                                },
+                                "zipCode": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ],
+                                    "title": "Zip code of location",
+                                    "description": "Zip Code of the offender. Can include Zip+4.",
+                                    "examples": ["20500-0000"]
+                                },
+                                "latitude": {
+                                    "type": [
+                                        "number",
+                                        "null"
+                                    ],
+                                    "title": "Latitude of location",
+                                    "examples": [38.897957],
+                                    "description": "The latitude of the offender's location."
+                                },
+                                "longitude": {
+                                    "type": [
+                                        "number",
+                                        "null"
+                                    ],
+                                    "title": "Longitude of location",
+                                    "examples": [-77.03656],
+                                    "description": "The longitude of the offender's location"
+                                }
+                            },
+                            "required": ["type"]
+                        },
+                        "minItems": 0
+                    },
+                    "offenderUri": {
+                        "type": "string",
+                        "title": "Offender URI",
+                        "description": "Fully qualified URI of where to view the information about the offender. Must be a public address.",
+                        "format": "uri",
+                        "examples": ["http://www.somesite.net/offenderdetails.php?OfndrID=10720166&AgencyID=54150"]
+                    },
+                    "imageUri": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Offender Image URI",
+                        "description": "Fully qualified URI of where to view the latest offender image on the jurisdiction's website. Must be a public address.",
+                        "format": "uri",
+                        "examples": ["https://www.somesite.net/offenders/offenderimage.jpg"]
+                    },
+                    "absconder": {
+                        "type": [
+                            "boolean",
+                            "null"
+                        ],
+                        "title": "A value indicating whether this offender is an absconder",
+                        "description": "Indicator of the offender being absconded",
+                        "examples": [true]
+                    },
+                    "jurisdictionId": {
+                        "type": "string",
+                        "title": "Jurisdiction Identifier",
+                        "description": "Identifier indicating which jurisdiction the offender record is from.",
+                        "examples": ["DC"]
+                    }
+                },
+                "required": [
+                    "name",
+                    "offenderUri",
+                    "jurisdictionId"
+                ]
+            },
+            "title": "Offender Results",
+            "description": "Array of offenders matched by the requested search"
+        },
+        "jurisdictionStatus": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+                "type": "object",
+                "properties": {
+                    "jurisdictionId": {
+                        "type": "string",
+                        "title": "Jurisdiction Identifier",
+                        "description": "Jurisdiction that was searched",
+                        "examples": ["DC"]
+                    },
+                    "statusCode": {
+                        "type": "integer",
+                        "title": "Status Code",
+                        "description": "Status code for the jurisdiction searched",
+                        "examples": [200]
+                    },
+                    "records": {
+                        "type": "integer",
+                        "title": "Records Found",
+                        "description": "The number of records found for the jurisdiction.",
+                        "examples": [20]
+                    },
+                    "message": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Message",
+                        "description": "Any additional information to pass about the search results such as errors."
+                    }
+                },
+                "required": [
+                    "statusCode",
+                    "records",
+                    "jurisdictionId"
+                ]
+            },
+            "title": "Jurisdiction Statuses",
+            "description": "List of the jurisdictions searched, the status of their search, and records found."
+        }
+    },
+    "definitions": {
+        "nameDef": {
+            "type": "object",
+            "properties": {
+                "prefix": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "title": "Offender Name Prefix",
+                    "examples": [
+                        "Mr",
+                        "Dr",
+                        "Mrs",
+                        "Ms"
+                    ],
+                    "description": "The prefix of the offender's name."
+                },
+                "firstName": {
+                    "type": "string",
+                    "title": "Offender First Name",
+                    "description": "The first name (given name) of the offender.",
+                    "examples": ["John"]
+                },
+                "middleName": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "title": "Offender Middle Name",
+                    "description": "The middle name or initial of the offender.",
+                    "examples": ["F"]
+                },
+                "lastName": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "title": "Offender Last Name",
+                    "description": "The last name (sur or family name) of the offender.",
+                    "examples": ["Smith"]
+                },
+                "suffix": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "title": "Offender Name Suffix",
+                    "examples": [
+                        "Jr",
+                        "III",
+                        "IV"
+                    ],
+                    "description": "The suffix of the offender's name."
+                }
+            },
+            "required": ["firstName"],
+            "title": "Offender Name",
+            "description": "Name information of the offender"
+        }
+    },
+    "$id": "http:/schema.nsopw.org/json/v1/response",
+    "title": "NSOPW JSON Results Schema",
+    "description": "Schema for the results to a query made by NSOPW to a jurisdiction",
+    "required": [
+        "id",
+        "statusCode",
+        "offenders",
+        "jurisdictionStatus"
+    ]
+}

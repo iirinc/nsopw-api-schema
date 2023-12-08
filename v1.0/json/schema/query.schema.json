@@ -1,0 +1,84 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "NSOPW JSON Query Schema",
+    "description": "Schema for NSOPW doing JSON Queries against jurisdictions services",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "title": "Search ID",
+            "description": "ID of the search provided. Must be unique per search. This would be used for diagnostic issues to be able to track queries."
+        },
+        "jurisdictions": {
+            "type": "array",
+            "items": {"type": "string"},
+            "minItems": 1,
+            "title": "Jurisdictions To Search",
+            "description": "Array of jurisdictions to search. This normally would only be one jurisdiction but in the case where a system hosts multiple jurisdictions, it could allow for more being queried at once."
+        },
+        "maxResults": {
+            "type": "integer",
+            "minimum": 0,
+            "title": "Maximum Results",
+            "description": "Maximum number of results to return. If more results found, return in status message. This number is per jurisdiction searched, not all of them combined.\n\nIf the number is equal to 0, the system would ignore the query values and return all records in the database. The system can call this once a day to cache the records incase there is an issue with the API connection. This is optional."
+        },
+        "firstName": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "lastName": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "city": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "county": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "zips": {
+            "type": [
+                "array",
+                "null"
+            ],
+            "items": {
+                "type": "string",
+                "minLength": 5,
+                "maxLength": 10
+            }
+        },
+        "longitude": {
+            "type": [
+                "number",
+                "null"
+            ]
+        },
+        "latitude": {
+            "type": [
+                "number",
+                "null"
+            ]
+        },
+        "distance": {
+            "type": [
+                "number",
+                "null"
+            ]
+        }
+    },
+    "$id": "http:/schema.nsopw.org/json/v1/query",
+    "required": [
+        "maxResults",
+        "jurisdictions"
+    ]
+}
