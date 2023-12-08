@@ -1,0 +1,120 @@
+{
+    "$schema": "https://raw.githubusercontent.com/iirinc/nsopw-api-schema/main/json/v1.0/schema/response.schema.json",
+    "id": "000000-0000-0000-00000000000",
+    "statusCode": 200,
+    "offenders": [
+        {
+            "id": "DC1000",
+            "name": {
+              "prefix": "Dr",
+              "firstName": "John",
+              "middleName": "Jacob",
+              "lastName": "Smith",
+              "suffix": "Jr"
+            },
+            "aliases": [
+              {
+                "prefix": "Dr",
+                "firstName": "John",
+                "middleName": "J",
+                "lastName": "Smith",
+                "suffix": "Jr"
+              }
+            ],
+            "gender": "M",
+            "dob": "1970-01-01",
+            "locations": [
+              {
+                "name": "The White House",
+                "type": "R",
+                "streetAddress": "1600 Pennsylvania Avenue NW",
+                "city": "Washington",
+                "county": "Fairfax",
+                "state": "DC",
+                "zipCode": "20500",
+                "latitude": 38.897957,
+                "longitude": -77.03656
+              }
+            ],
+            "offenderUri": "http://www.somesite.net/offenderdetails.php?OfndrID=10720166&AgencyID=54150",
+            "imageUri": "https://www.somesite.net/offenders/offenderimage.jpg",
+            "absconder": false,
+            "jurisdictionId": "DC"
+        },
+        {
+            "id":"FL1000",
+            "name": {
+                "firstName": "John",
+                "lastName": "Smith"
+            },
+            "aliases": [
+                {
+                    "firstName": "Jacob",
+                    "lastName": "Smith"
+                },
+                {
+                    "firstName": "Jake",
+                    "lastName": "Smith"
+                }
+            ],
+            "gender": "M",
+            "dob": "1900-01-31",
+            "locations": [
+                {
+                    "name": "Florida State Capitol",
+                    "type": "R",
+                    "streetAddress": "400 S Monroe St",
+                    "city": "Tallahassee",
+                    "county": "Leon",
+                    "state": "FL",
+                    "zipCode": "32399",
+                    "latitude": 30.4383527,
+                    "longitude": -84.2811782
+                }
+            ],
+            "offenderUri": "http://www.somesite.net/offenderdetails.php?OfndrID=10720166&AgencyID=54150",
+            "imageUri": "https://www.somesite.net/offenders/offenderimage.jpg",
+            "absconder": false,
+            "jurisdictionId": "FL"
+        },
+        {
+            "id":"FL1001",
+            "name": {
+                "firstName": "John",
+                "lastName": "Smith"
+            },
+            "aliases": [],
+            "gender": "M",
+            "dob": "1940-01-31",
+            "locations": [
+                {
+                    "name": "Florida State Capitol",
+                    "type": "R",
+                    "streetAddress": "400 S Monroe St",
+                    "city": "Tallahassee",
+                    "county": "Leon",
+                    "state": "FL",
+                    "zipCode": "32399",
+                    "latitude": 30.4383527,
+                    "longitude": -84.2811782
+                }
+            ],
+            "offenderUri": "http://www.somesite.net/offenderdetails.php?OfndrID=10720166&AgencyID=54150",
+            "imageUri": "https://www.somesite.net/offenders/offenderimage.jpg",
+            "absconder": false,
+            "jurisdictionId": "FL"
+        }
+    ],
+    "jurisdictionStatus": [
+        {
+            "jurisdictionId": "DC",
+            "statusCode": 200,
+            "records": 1
+        },
+        {
+            "jurisdictionId": "FL",
+            "statusCode": 200,
+            "records": 2
+        }
+    ]
+}

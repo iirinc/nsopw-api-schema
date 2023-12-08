@@ -1,0 +1,88 @@
+{
+    "$schema": "https://raw.githubusercontent.com/iirinc/nsopw-api-schema/main/json/v1.0/schema/response.schema.json",
+    "id": "000000-0000-0000-00000000000",
+    "statusCode": 200,
+    "offenders": [
+        {
+            "id": "GA1000",
+            "name": {
+              "prefix": "Dr",
+              "firstName": "John",
+              "middleName": "Jacob",
+              "lastName": "Smith",
+              "suffix": "Jr"
+            },
+            "aliases": [
+              {
+                "prefix": "Dr",
+                "firstName": "John",
+                "middleName": "J",
+                "lastName": "Smith",
+                "suffix": "Jr"
+              }
+            ],
+            "gender": "M",
+            "dob": "1970-01-01",
+            "locations": [
+              {
+                "name": "Georgia State Capitol",
+                "type": "R",
+                "streetAddress": "206 Washington St SW",
+                "city": "Atlanta",
+                "county": "Fulton",
+                "state": "GA",
+                "zipCode": "30334",
+                "latitude": 33.7510,
+                "longitude": -84.3896
+              }
+            ],
+            "offenderUri": "http://www.somesite.net/offenderdetails.php?OfndrID=10720166&AgencyID=54150",
+            "imageUri": "https://www.somesite.net/offenders/offenderimage.jpg",
+            "absconder": false,
+            "jurisdictionId": "GA"
+        },
+        {
+            "id":"GA1001",
+            "name": {
+                "firstName": "John",
+                "lastName": "Smith"
+            },
+            "aliases": [
+                {
+                    "firstName": "Jacob",
+                    "lastName": "Smith"
+                },
+                {
+                    "firstName": "Jake",
+                    "lastName": "Smith"
+                }
+            ],
+            "gender": "M",
+            "dob": "1900-01-31",
+            "locations": [
+                {
+                    "name": "Lilburn Police Department",
+                    "type": "R",
+                    "streetAddress": "4600 Lawrenceville Highway",
+                    "city": "Lilburn",
+                    "county": "Gwinnett",
+                    "state": "GA",
+                    "zipCode": "30047",
+                    "latitude": 33.8670,
+                    "longitude": -84.1130
+                }
+            ],
+            "offenderUri": "http://www.somesite.net/offenderdetails.php?OfndrID=10720166&AgencyID=54150",
+            "imageUri": "https://www.somesite.net/offenders/offenderimage.jpg",
+            "absconder": false,
+            "jurisdictionId": "GA"
+        }
+    ],
+    "jurisdictionStatus": [
+        {
+            "jurisdictionId": "GA",
+            "statusCode": 200,
+            "records": 2
+        }
+    ]
+}
