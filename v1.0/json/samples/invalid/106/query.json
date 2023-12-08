@@ -1,0 +1,16 @@
+{
+  "$schema": "https://raw.githubusercontent.com/iirinc/nsopw-api-schema/main/v1.0/json/schema/query.schema.json",
+  "id": "000000-0000-0000-00000000000",
+  "maxResults": 300,
+  "firstName": null,
+  "lastName": null,
+  "city": null,
+  "county": null,
+  "zips": null,
+  "longitude": -77.0365,
+  "latitude": 38.8977,
+  "distance": 400,
+  "jurisdictions": [
+    "DC"
+  ]
+}

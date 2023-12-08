@@ -159,7 +159,8 @@
                                     "description": "The longitude of the offender's location"
                                 }
                             },
-                            "required": ["type"]
+                            "required": ["type"],
+                            "additionalProperties": false
                         },
                         "minItems": 0
                     },

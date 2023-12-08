@@ -10,7 +10,11 @@ This is a repository of the NSOPW API/Web Service Schema Documentation. This hos
 ## JSON
 These are schemas for JSON interaction using RESTful services.
 
-- [Version 1.0](v1.0/json)
+- [Version 1.0](v1.0/json/README.md)
+  - [Schema Information](v1.0/json/schema/README.md)
+  - [Query Details](v1.0/json/QueryDetails.md)
+  - [Response Details](v1.0/json/ResponseDetails.md)
+  - [Samples](v1.0/json/samples/README.md)
 
 ## XML
 

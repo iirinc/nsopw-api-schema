@@ -34,7 +34,8 @@
             ],
             "title": "First Name",
             "description": "The first name (given name) of the offender to search.",
-            "examples": ["John"]
+            "examples": ["John"],
+            "maxLength": 50
         },
         "lastName": {
             "type": [
@@ -43,7 +44,8 @@
             ],
             "title": "Last Name",
             "description": "The last name (sur or family name) of the offender to search.",
-            "examples": ["Smith"]
+            "examples": ["Smith"],
+            "maxLength": 50
         },
         "city": {
             "type": [
@@ -52,7 +54,8 @@
             ],
             "title": "City",
             "examples": ["Washington"],
-            "description": "The city to search for an offender."
+            "description": "The city to search for an offender.",
+            "maxLength": 50
         },
         "county": {
             "type": [
@@ -61,7 +64,8 @@
             ],
             "title": "County",
             "examples": ["Fairfax"],
-            "description": "The county to search for an offender."
+            "description": "The county to search for an offender.",
+            "maxLength": 50
         },
         "zips": {
             "type": [
