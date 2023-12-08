@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:ext="http://www.nsopr.org/xml/2/extension" xmlns:nc="http://niem.gov/niem/niem-core/2.0" xmlns:i="http://niem.gov/niem/appinfo/2.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" targetNamespace="http://www.nsopr.org/xml/2/extension">
+	<xs:import namespace="http://niem.gov/niem/niem-core/2.0" schemaLocation="niem-core.xsd"/>
+	<xs:complexType name="PersonBinaryLocationURIAssociationType">
+		<xs:annotation>
+			<xs:documentation>Association between an offender and a website URL</xs:documentation>
+			<xs:appinfo>
+				<i:Base i:name="AssociationType"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="nc:AssociationType">
+				<xs:sequence>
+					<xs:element ref="nc:PersonReference" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="nc:BinaryLocationURIReference" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PersonDeviceVisitedWebsiteURIAssociationType">
+		<xs:annotation>
+			<xs:documentation>Association between an offender and a website URL</xs:documentation>
+			<xs:appinfo>
+				<i:Base i:name="AssociationType"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="nc:AssociationType">
+				<xs:sequence>
+					<xs:element ref="nc:PersonReference" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="nc:DeviceVisitedWebsiteURIReference" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="PersonSchoolLocationAssociation" type="nc:PersonLocationAssociationType"/>
+	<xs:element name="OffenderURLAssociation" type="ext:PersonDeviceVisitedWebsiteURIAssociationType"/>
+	<xs:element name="OffenderPictureURIAssociation" type="ext:PersonBinaryLocationURIAssociationType"/>
+</xs:schema>

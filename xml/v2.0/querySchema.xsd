@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:q="http://www.nsopr.org/xml/2/query" targetNamespace="http://www.nsopr.org/xml/2/query" elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xs:simpleType name="QueryMatchOperatorType">
+        <xs:annotation>
+            <xs:documentation>The manner in which the criterion is to be matched.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Equals"/>
+            <xs:enumeration value="BeginsWith"/>
+            <xs:enumeration value="EndsWith"/>
+            <xs:enumeration value="Contains"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="QueryParameterFieldType">
+        <xs:annotation>
+            <xs:documentation>The field to be matched in a criterion.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="LastName"/>
+            <xs:enumeration value="FirstName"/>
+            <xs:enumeration value="County"/>
+            <xs:enumeration value="City"/>
+            <xs:enumeration value="State"/>
+            <xs:enumeration value="Zipcode"/>
+            <xs:enumeration value="DistanceInMiles"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="QueryParameterType">
+        <xs:annotation>
+            <xs:documentation>The item to be matched in a criterion.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="q:QueryParameterField"/>
+            <xs:element ref="q:QueryParameterValue"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="QueryFieldMatchCriterionType">
+        <xs:annotation>
+            <xs:documentation>A single field match criterion to be applied to the query group.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="q:QueryParameter"/>
+            <xs:element ref="q:QueryMatchOperator"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="QueryGeoMatchCriterionType">
+        <xs:annotation>
+            <xs:documentation>A geographical match criterion to be applied to the query group.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="q:LatitudeDegrees"/>
+            <xs:element ref="q:LongitudeDegrees"/>
+            <xs:element ref="q:DistanceInMiles"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="AndQueryGroupType">
+        <xs:annotation>
+            <xs:documentation>A group of queries whose results are to be combined by intersection.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:choice minOccurs="1" maxOccurs="unbounded">
+                <xs:element ref="q:QueryFieldMatchCriterion"/>
+                <xs:element ref="q:QueryGeoMatchCriterion"/>
+                <xs:element ref="q:QueryAbsconderCriterion"/>
+                <xs:element ref="q:OrQueryGroup"/>
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="OrQueryGroupType">
+        <xs:annotation>
+            <xs:documentation>A group of queries whose results are to be combined by union.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:choice minOccurs="1" maxOccurs="unbounded">
+                <xs:element ref="q:QueryFieldMatchCriterion"/>
+                <xs:element ref="q:QueryGeoMatchCriterion"/>
+                <xs:element ref="q:QueryAbsconderCriterion"/>
+                <xs:element ref="q:AndQueryGroup"/>
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="NSOPRQueryType">
+        <xs:annotation>
+            <xs:documentation>Represent a NSOPR Query</xs:documentation>
+        </xs:annotation>
+        <xs:choice>
+            <xs:element ref="q:AndQueryGroup"/>
+            <xs:element ref="q:OrQueryGroup"/>
+        </xs:choice>
+    </xs:complexType>
+    <xs:element name="QueryParameterField" type="q:QueryParameterFieldType"/>
+    <xs:element name="QueryParameterValue" type="xs:string"/>
+    <xs:element name="LatitudeDegrees" type="xs:decimal"/>
+    <xs:element name="LongitudeDegrees" type="xs:decimal"/>
+    <xs:element name="DistanceInMiles" type="xs:decimal"/>
+    <xs:element name="QueryParameter" type="q:QueryParameterType"/>
+    <xs:element name="QueryMatchOperator" type="q:QueryMatchOperatorType"/>
+    <xs:element name="QueryFieldMatchCriterion" type="q:QueryFieldMatchCriterionType"/>
+    <xs:element name="QueryGeoMatchCriterion" type="q:QueryGeoMatchCriterionType"/>
+    <xs:element name="QueryAbsconderCriterion" type="xs:boolean"/>
+    <xs:element name="AndQueryGroup" type="q:AndQueryGroupType"/>
+    <xs:element name="OrQueryGroup" type="q:OrQueryGroupType"/>
+    <xs:element name="NSOPRQuery" type="q:NSOPRQueryType"/>
+</xs:schema>

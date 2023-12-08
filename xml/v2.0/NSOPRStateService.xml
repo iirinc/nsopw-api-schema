@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:s7="http://niem.gov/niem/usps_states/2.0" xmlns:s2="http://niem.gov/niem/niem-core/2.0" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s5="http://niem.gov/niem/proxy/xsd/2.0" xmlns:s0="http://www.nsopr.org/xml/2/query" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s3="http://niem.gov/niem/structures/2.0" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://www.nsopr.org/xml/2/stateservice" xmlns:s6="http://www.nsopr.org/xml/2/extension" xmlns:s1="http://www.nsopr.org/xml/2/response" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s4="http://niem.gov/niem/domains/jxdm/4.0" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://www.nsopr.org/xml/2/stateservice" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.nsopr.org/xml/2/query">
+      <s:element name="NSOPRQuery" type="s0:NSOPRQueryType"/>
+      <s:complexType name="NSOPRQueryType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ResultLimit" type="s:nonNegativeInteger"/>
+          <s:choice minOccurs="1" maxOccurs="1">
+            <s:element minOccurs="0" maxOccurs="1" name="OrQueryGroup" type="s0:OrQueryGroupType"/>
+            <s:element minOccurs="0" maxOccurs="1" name="AndQueryGroup" type="s0:AndQueryGroupType"/>
+          </s:choice>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OrQueryGroupType">
+        <s:sequence>
+          <s:choice minOccurs="0" maxOccurs="unbounded">
+            <s:element minOccurs="0" maxOccurs="1" name="QueryGeoMatchCriterion" type="s0:QueryGeoMatchCriterionType"/>
+            <s:element minOccurs="1" maxOccurs="1" name="QueryAbsconderCriterion" type="s:boolean"/>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryFieldMatchCriterion" type="s0:QueryFieldMatchCriterionType"/>
+            <s:element minOccurs="0" maxOccurs="1" name="AndQueryGroup" type="s0:AndQueryGroupType"/>
+          </s:choice>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="QueryGeoMatchCriterionType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="LatitudeDegrees" type="s:decimal"/>
+          <s:element minOccurs="1" maxOccurs="1" name="LongitudeDegrees" type="s:decimal"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DistanceInMiles" type="s:decimal"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="QueryFieldMatchCriterionType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="QueryParameter" type="s0:QueryParameterType"/>
+          <s:element minOccurs="1" maxOccurs="1" name="QueryMatchOperator" type="s0:QueryMatchOperatorType"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="QueryParameterType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="QueryParameterField" type="s0:QueryParameterFieldType"/>
+          <s:element minOccurs="0" maxOccurs="1" name="QueryParameterValue" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="QueryParameterFieldType">
+        <s:restriction base="s:string">
+          <s:enumeration value="LastName"/>
+          <s:enumeration value="FirstName"/>
+          <s:enumeration value="County"/>
+          <s:enumeration value="City"/>
+          <s:enumeration value="State"/>
+          <s:enumeration value="Zipcode"/>
+          <s:enumeration value="DistanceInMiles"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="QueryMatchOperatorType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Equals"/>
+          <s:enumeration value="BeginsWith"/>
+          <s:enumeration value="EndsWith"/>
+          <s:enumeration value="Contains"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="AndQueryGroupType">
+        <s:sequence>
+          <s:choice minOccurs="0" maxOccurs="unbounded">
+            <s:element minOccurs="0" maxOccurs="1" name="OrQueryGroup" type="s0:OrQueryGroupType"/>
+            <s:element minOccurs="1" maxOccurs="1" name="QueryAbsconderCriterion" type="s:boolean"/>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryFieldMatchCriterion" type="s0:QueryFieldMatchCriterionType"/>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryGeoMatchCriterion" type="s0:QueryGeoMatchCriterionType"/>
+          </s:choice>
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.nsopr.org/xml/2/response">
+      <s:import namespace="http://niem.gov/niem/niem-core/2.0"/>
+      <s:import namespace="http://niem.gov/niem/domains/jxdm/4.0"/>
+      <s:import namespace="http://www.nsopr.org/xml/2/extension"/>
+      <s:element name="NSOPRResponse" type="s1:NSOPRResponseType"/>
+      <s:complexType name="NSOPRResponseType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" ref="s2:Person"/>
+          <s:element minOccurs="0" maxOccurs="unbounded" ref="s2:Location"/>
+          <s:element minOccurs="0" maxOccurs="unbounded" ref="s2:DeviceVisitedWebsiteURI"/>
+          <s:element minOccurs="0" maxOccurs="unbounded" ref="s2:BinaryLocationURI"/>
+          <s:element minOccurs="0" maxOccurs="unbounded" ref="s4:RegisteredSexOffender"/>
+          <s:element minOccurs="0" maxOccurs="unbounded" ref="s2:ResidenceAssociation"/>
+          <s:element minOccurs="0" maxOccurs="unbounded" ref="s2:PersonEmploymentLocationAssociation"/>
+          <s:element minOccurs="0" maxOccurs="unbounded" ref="s6:PersonSchoolLocationAssociation"/>
+          <s:element minOccurs="0" maxOccurs="unbounded" ref="s6:OffenderURLAssociation"/>
+          <s:element minOccurs="0" maxOccurs="unbounded" ref="s6:OffenderPictureURIAssociation"/>
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://niem.gov/niem/niem-core/2.0">
+      <s:import namespace="http://niem.gov/niem/structures/2.0"/>
+      <s:import namespace="http://niem.gov/niem/proxy/xsd/2.0"/>
+      <s:import namespace="http://niem.gov/niem/usps_states/2.0"/>
+      <s:element name="Person" nillable="true" type="s2:PersonType"/>
+      <s:complexType name="PersonType">
+        <s:complexContent mixed="false">
+          <s:extension base="s3:ComplexObjectType">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="unbounded" name="PersonAlternateName" nillable="true" type="s2:PersonNameType"/>
+              <s:element minOccurs="1" maxOccurs="1" name="PersonBirthDate" nillable="true" type="s2:DateType"/>
+              <s:element minOccurs="1" maxOccurs="1" name="PersonName" nillable="true" type="s2:PersonNameType"/>
+              <s:element minOccurs="1" maxOccurs="1" name="PersonSexText" nillable="true" type="s2:TextType"/>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="RoleOfPersonReference" type="s3:ReferenceType"/>
+      <s:complexType name="PersonNameType">
+        <s:complexContent mixed="false">
+          <s:extension base="s3:ComplexObjectType">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="PersonNamePrefixText" nillable="true" type="s2:TextType"/>
+              <s:element minOccurs="1" maxOccurs="1" name="PersonGivenName" nillable="true" type="s2:PersonNameTextType"/>
+              <s:element minOccurs="1" maxOccurs="1" name="PersonMiddleName" nillable="true" type="s2:PersonNameTextType"/>
+              <s:element minOccurs="1" maxOccurs="1" name="PersonSurName" nillable="true" type="s2:PersonNameTextType"/>
+              <s:element minOccurs="1" maxOccurs="1" name="PersonNameSuffixText" nillable="true" type="s2:TextType"/>
+            </s:sequence>
+            <s:attribute form="qualified" name="personNameCommentText" type="s:string"/>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="TextType">
+        <s:simpleContent>
+          <s:extension base="s5:string"/>
+        </s:simpleContent>
+      </s:complexType>
+      <s:complexType name="ProperNameTextType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:TextType"/>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="PersonNameTextType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:ProperNameTextType"/>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="AssociationType">
+        <s:complexContent mixed="false">
+          <s:extension base="s3:ComplexObjectType"/>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="PersonReference" type="s3:ReferenceType"/>
+      <s:element name="DeviceVisitedWebsiteURIReference" type="s3:ReferenceType"/>
+      <s:complexType name="PersonLocationAssociationType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:AssociationType">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="PersonReference" type="s3:ReferenceType"/>
+              <s:element minOccurs="0" maxOccurs="1" name="LocationReference" type="s3:ReferenceType"/>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="PersonResidenceAssociationType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:PersonLocationAssociationType"/>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="BinaryLocationURIReference" type="s3:ReferenceType"/>
+      <s:complexType name="DateType">
+        <s:complexContent mixed="false">
+          <s:extension base="s3:ComplexObjectType">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="unbounded" name="Date" nillable="true" type="s5:date"/>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="LongitudeCoordinateType">
+        <s:complexContent mixed="false">
+          <s:extension base="s3:ComplexObjectType">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="LongitudeDegreeValue" nillable="true" type="s2:LongitudeDegreeType"/>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="LongitudeDegreeType">
+        <s:simpleContent>
+          <s:extension base="s:decimal">
+            <s:attribute ref="s3:id"/>
+            <s:attribute ref="s3:metadata"/>
+            <s:attribute ref="s3:linkMetadata"/>
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:complexType name="LatitudeCoordinateType">
+        <s:complexContent mixed="false">
+          <s:extension base="s3:ComplexObjectType">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="LatitudeDegreeValue" nillable="true" type="s2:LatitudeDegreeType"/>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="LatitudeDegreeType">
+        <s:simpleContent>
+          <s:extension base="s:decimal">
+            <s:attribute ref="s3:id"/>
+            <s:attribute ref="s3:metadata"/>
+            <s:attribute ref="s3:linkMetadata"/>
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:complexType name="TwoDimensionalGeographicCoordinateType">
+        <s:complexContent mixed="false">
+          <s:extension base="s3:ComplexObjectType">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="GeographicCoordinateLatitude" nillable="true" type="s2:LatitudeCoordinateType"/>
+              <s:element minOccurs="1" maxOccurs="1" name="GeographicCoordinateLongitude" nillable="true" type="s2:LongitudeCoordinateType"/>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="StreetType">
+        <s:complexContent mixed="false">
+          <s:extension base="s3:ComplexObjectType">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="StreetFullText" nillable="true" type="s2:TextType"/>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="StructuredAddressType">
+        <s:complexContent mixed="false">
+          <s:extension base="s3:ComplexObjectType">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="LocationStreet" nillable="true" type="s2:StreetType"/>
+              <s:element minOccurs="1" maxOccurs="1" name="LocationCityName" nillable="true" type="s2:ProperNameTextType"/>
+              <s:element minOccurs="1" maxOccurs="1" name="LocationCountyName" nillable="true" type="s2:ProperNameTextType"/>
+              <s:element minOccurs="1" maxOccurs="1" name="LocationStateUSPostalServiceCode" nillable="true" type="s7:USStateCodeType"/>
+              <s:element minOccurs="1" maxOccurs="1" name="LocationPostalCode" nillable="true" type="s5:string"/>
+              <s:element minOccurs="1" maxOccurs="1" name="LocationPostalExtensionCode" nillable="true" type="s5:string"/>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="AddressType">
+        <s:complexContent mixed="false">
+          <s:extension base="s3:ComplexObjectType">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="unbounded" name="StructuredAddress" nillable="true" type="s2:StructuredAddressType"/>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="LocationType">
+        <s:complexContent mixed="false">
+          <s:extension base="s3:ComplexObjectType">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="LocationAddress" nillable="true" type="s2:AddressType"/>
+              <s:element minOccurs="1" maxOccurs="1" name="LocationName" nillable="true" type="s2:ProperNameTextType"/>
+              <s:element minOccurs="1" maxOccurs="1" name="LocationTwoDimensionalGeographicCoordinate" nillable="true" type="s2:TwoDimensionalGeographicCoordinateType"/>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="Location" nillable="true" type="s2:LocationType"/>
+      <s:element name="DeviceVisitedWebsiteURI" nillable="true" type="s5:anyURI"/>
+      <s:element name="BinaryLocationURI" nillable="true" type="s5:anyURI"/>
+      <s:element name="ResidenceAssociation" nillable="true" type="s2:PersonResidenceAssociationType"/>
+      <s:element name="PersonEmploymentLocationAssociation" nillable="true" type="s2:PersonLocationAssociationType"/>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://niem.gov/niem/structures/2.0">
+      <s:complexType name="ComplexObjectType" abstract="true">
+        <s:attribute form="qualified" name="id" type="s:ID"/>
+        <s:attribute form="qualified" name="metadata" type="s:IDREFS"/>
+        <s:attribute form="qualified" name="linkMetadata" type="s:IDREFS"/>
+      </s:complexType>
+      <s:complexType name="ReferenceType">
+        <s:attribute form="qualified" name="id" type="s:ID"/>
+        <s:attribute form="qualified" name="ref" type="s:IDREF"/>
+        <s:attribute form="qualified" name="linkMetadata" type="s:IDREFS"/>
+      </s:complexType>
+      <s:attribute name="id" type="s:ID"/>
+      <s:attribute name="metadata" type="s:IDREFS"/>
+      <s:attribute name="linkMetadata" type="s:IDREFS"/>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://niem.gov/niem/domains/jxdm/4.0">
+      <s:import namespace="http://niem.gov/niem/structures/2.0"/>
+      <s:import namespace="http://niem.gov/niem/niem-core/2.0"/>
+      <s:complexType name="RegisteredOffenderType">
+        <s:complexContent mixed="false">
+          <s:extension base="s3:ComplexObjectType">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" ref="s2:RoleOfPersonReference"/>
+              <s:element minOccurs="1" maxOccurs="1" name="RegisteredOffenderStatusIndicator" nillable="true" type="s:boolean"/>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="RegisteredSexOffender" nillable="true" type="s4:RegisteredOffenderType"/>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://niem.gov/niem/proxy/xsd/2.0">
+      <s:import namespace="http://niem.gov/niem/structures/2.0"/>
+      <s:complexType name="string">
+        <s:simpleContent>
+          <s:extension base="s:string">
+            <s:attribute ref="s3:id"/>
+            <s:attribute ref="s3:metadata"/>
+            <s:attribute ref="s3:linkMetadata"/>
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:complexType name="date">
+        <s:simpleContent>
+          <s:extension base="s:date">
+            <s:attribute ref="s3:id"/>
+            <s:attribute ref="s3:metadata"/>
+            <s:attribute ref="s3:linkMetadata"/>
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:complexType name="anyURI">
+        <s:simpleContent>
+          <s:extension base="s:anyURI">
+            <s:attribute ref="s3:id"/>
+            <s:attribute ref="s3:metadata"/>
+            <s:attribute ref="s3:linkMetadata"/>
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.nsopr.org/xml/2/extension">
+      <s:import namespace="http://niem.gov/niem/niem-core/2.0"/>
+      <s:complexType name="PersonDeviceVisitedWebsiteURIAssociationType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:AssociationType">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="unbounded" ref="s2:PersonReference"/>
+              <s:element minOccurs="0" maxOccurs="unbounded" ref="s2:DeviceVisitedWebsiteURIReference"/>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="PersonBinaryLocationURIAssociationType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:AssociationType">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="unbounded" ref="s2:PersonReference"/>
+              <s:element minOccurs="0" maxOccurs="unbounded" ref="s2:BinaryLocationURIReference"/>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="PersonSchoolLocationAssociation" type="s2:PersonLocationAssociationType"/>
+      <s:element name="OffenderURLAssociation" type="s6:PersonDeviceVisitedWebsiteURIAssociationType"/>
+      <s:element name="OffenderPictureURIAssociation" type="s6:PersonBinaryLocationURIAssociationType"/>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://niem.gov/niem/usps_states/2.0">
+      <s:import namespace="http://niem.gov/niem/structures/2.0"/>
+      <s:complexType name="USStateCodeType">
+        <s:simpleContent>
+          <s:extension base="s:token">
+            <s:attribute ref="s3:id"/>
+            <s:attribute ref="s3:metadata"/>
+            <s:attribute ref="s3:linkMetadata"/>
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="CallNSOPRStateServiceSoapIn">
+    <wsdl:part name="NSOPRQuery" element="s0:NSOPRQuery"/>
+  </wsdl:message>
+  <wsdl:message name="CallNSOPRStateServiceSoapOut">
+    <wsdl:part name="CallNSOPRStateServiceResult" element="s1:NSOPRResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="NSOPRStateServiceSoap">
+    <wsdl:operation name="CallNSOPRStateService">
+      <wsdl:input message="tns:CallNSOPRStateServiceSoapIn"/>
+      <wsdl:output message="tns:CallNSOPRStateServiceSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NSOPRStateServiceSoap" type="tns:NSOPRStateServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="CallNSOPRStateService">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NSOPRStateServiceSoap12" type="tns:NSOPRStateServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="CallNSOPRStateService">
+      <soap12:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="NSOPRStateService">
+    <wsdl:port name="NSOPRStateServiceSoap" binding="tns:NSOPRStateServiceSoap">
+      <soap:address location="http://127.0.0.1/NSOPR/NSOPRStateService.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="NSOPRStateServiceSoap12" binding="tns:NSOPRStateServiceSoap12">
+      <soap12:address location="http://127.0.0.1/NSOPR/NSOPRStateService.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

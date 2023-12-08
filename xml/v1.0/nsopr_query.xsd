@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2005 sp1 U (http://www.xmlspy.com) by Gary Morgan (Asynchrony Solutions Inc) -->
+<xs:schema xmlns:sor="http://www.nsopr.org/xml/1" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:j="http://www.it.ojp.gov/jxdm/3.0.2" targetNamespace="http://www.nsopr.org/xml/1" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.it.ojp.gov/jxdm/3.0.2" schemaLocation="constraint.xsd"/>
+	<xs:complexType name="NSOPRQueryType">
+		<xs:annotation>
+			<xs:documentation>A Query document for Registered Sex Offenders</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="j:Person"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="NSOPRQuery" type="sor:NSOPRQueryType">
+		<xs:annotation>
+			<xs:documentation>instance of a NSOPRQueryType</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+</xs:schema>

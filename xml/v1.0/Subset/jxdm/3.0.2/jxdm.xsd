@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.it.ojp.gov/jxdm/3.0.2" xmlns:j-usps="http://www.it.ojp.gov/jxdm/3.0.2/proxy/usps_states/1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:j-xsd="http://www.it.ojp.gov/jxdm/3.0.2/proxy/xsd/1.0" xmlns:j="http://www.it.ojp.gov/jxdm/3.0.2">
+  <xsd:annotation>
+    <xsd:documentation>The Global Justice XML Data Model.</xsd:documentation>
+  </xsd:annotation>
+  <xsd:import namespace="http://www.it.ojp.gov/jxdm/3.0.2/proxy/xsd/1.0" schemaLocation="proxy/xsd/1.0/xsd.xsd">
+    <xsd:annotation>
+      <xsd:documentation>Proxy types that carry dictionary metadata and have XML data type simple contents.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:import>
+  <xsd:import namespace="http://www.it.ojp.gov/jxdm/3.0.2/proxy/usps_states/1.0" schemaLocation="proxy/usps_states/1.0/usps_states.xsd">
+    <xsd:annotation>
+      <xsd:documentation>Proxy types that carry dictionary metadata and extend United States state and possession abbreviations from the United States Parcel Service (USPS).</xsd:documentation>
+    </xsd:annotation>
+  </xsd:import>
+  <xsd:attributeGroup name="SuperTypeMetadata"/>
+  <xsd:complexType name="AddressType">
+    <xsd:annotation>
+      <xsd:documentation>A structure that describes a postal location to which paper mail can be directed.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="j:SuperType">
+        <xsd:sequence>
+          <xsd:element ref="j:LocationCityName" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>A name of a city or town.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="j:LocationCountyName" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>A name of a county, parish, or vicinage.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="j:LocationStateName" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>A name of a state, commonwealth, province, or other subregion of a country.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="j:LocationPostalCodeID" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>A zip code or postal code.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="IDType">
+    <xsd:annotation>
+      <xsd:documentation>A structure that describes an identifier of an entity.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="j:SuperType">
+        <xsd:sequence>
+          <xsd:element ref="j:ID" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>A value that identifies an entity within the identifier domain.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="LocationType">
+    <xsd:annotation>
+      <xsd:documentation>A structure that describes a physical location.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="j:SuperType">
+        <xsd:sequence>
+          <xsd:element ref="j:LocationAddress" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>Details about an address for a location, e.g., a postal address.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="PersonNameTextType">
+    <xsd:annotation>
+      <xsd:documentation>A structure that describes a name of a person.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="j:TextType"/>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="PersonNameType">
+    <xsd:annotation>
+      <xsd:documentation>A structure that describes a name of a person.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="j:SuperType">
+        <xsd:sequence>
+          <xsd:element ref="j:PersonGivenName" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>A first name of a person.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="j:PersonMiddleName" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>A middle name of a person.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="j:PersonSurName" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>A last name or family name of a person.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="PersonType">
+    <xsd:annotation>
+      <xsd:documentation>A structure that describes the inherent and frequently associated characteristics of a  person.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="j:SuperType">
+        <xsd:sequence>
+          <xsd:element ref="j:PersonName" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>A name by which a person is known. </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="j:Residence" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>Details about the place in which a person lives.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="RegisteredOffenderType">
+    <xsd:annotation>
+      <xsd:documentation>A structure that describes information about a person who is required to register information with a law enforcement agency due to having been convicted of a certain type of crime.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="j:PersonType">
+        <xsd:sequence>
+          <xsd:element ref="j:RegisteredOffenderID" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>Identification information identifying a person as a certain kind of registered offender.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ResidenceType">
+    <xsd:annotation>
+      <xsd:documentation>A structure that describes a place in which a person lives.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="j:LocationType"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="SuperType">
+    <xsd:annotation>
+      <xsd:documentation>A structure that describes metadata common to most other structures.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+  </xsd:complexType>
+  <xsd:complexType name="TextType">
+    <xsd:annotation>
+      <xsd:documentation>A proxy structure that represents a character string, generally in the form of words of a language, and includes language metadata.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="j-xsd:string"/>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:element name="ID" type="j:TextType" nillable="true">
+    <xsd:annotation>
+      <xsd:documentation>A value that identifies an entity within the identifier domain.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="Location" type="j:LocationType" nillable="true">
+    <xsd:annotation>
+      <xsd:documentation>Details about a physical location.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="LocationAddress" type="j:AddressType" nillable="true">
+    <xsd:annotation>
+      <xsd:documentation>Details about an address for a location, e.g., a postal address.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="LocationCityName" type="j:TextType" nillable="true">
+    <xsd:annotation>
+      <xsd:documentation>A name of a city or town.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="LocationCountyName" type="j:TextType" nillable="true">
+    <xsd:annotation>
+      <xsd:documentation>A name of a county, parish, or vicinage.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="LocationPostalCodeID" type="j:IDType" nillable="true">
+    <xsd:annotation>
+      <xsd:documentation>A zip code or postal code.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="LocationStateCode.USPostalService" type="j-usps:USStateCodeType" nillable="true">
+    <xsd:annotation>
+      <xsd:documentation>A code identifying a state.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="LocationStateName" type="j:TextType" nillable="true">
+    <xsd:annotation>
+      <xsd:documentation>A name of a state, commonwealth, province, or other subregion of a country.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="Person" type="j:PersonType" nillable="true">
+    <xsd:annotation>
+      <xsd:documentation>Describes inherent and frequently associated characteristics of a person.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="PersonGivenName" type="j:PersonNameTextType" nillable="true">
+    <xsd:annotation>
+      <xsd:documentation>A first name of a person.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="PersonMiddleName" type="j:PersonNameTextType" nillable="true">
+    <xsd:annotation>
+      <xsd:documentation>A middle name of a person.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="PersonName" type="j:PersonNameType" nillable="true">
+    <xsd:annotation>
+      <xsd:documentation>A name by which a person is known. </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="PersonSuffixName" type="j:TextType" nillable="true">
+    <xsd:annotation>
+      <xsd:documentation>A component that is appended after the family name that distinguishes members of a family with the same given, middle, and last name, (e.g., Jr, Sr, III), or otherwise qualifies the name (e.g., MD, LLD, PhD).</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="PersonSurName" type="j:PersonNameTextType" nillable="true">
+    <xsd:annotation>
+      <xsd:documentation>A last name or family name of a person.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="RegisteredOffenderID" type="j:IDType" nillable="true">
+    <xsd:annotation>
+      <xsd:documentation>Identification information identifying a person as a certain kind of registered offender.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="RegisteredSexOffender" type="j:RegisteredOffenderType" nillable="true">
+    <xsd:annotation>
+      <xsd:documentation>A person who is required to register as a sexual offender.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="Residence" type="j:ResidenceType" nillable="true">
+    <xsd:annotation>
+      <xsd:documentation>Details about the place in which a person lives.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+</xsd:schema>

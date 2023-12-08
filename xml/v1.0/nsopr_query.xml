@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NSOPRQuery xmlns="http://www.nsopr.org/xml/1" xmlns:j="http://www.it.ojp.gov/jxdm/3.0.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.nsopr.org/xml/1
+ nsopr_query.xsd">
+	<j:Person>
+		<j:PersonName>
+			<j:PersonGivenName>String</j:PersonGivenName>
+			<j:PersonMiddleName>String</j:PersonMiddleName>
+			<j:PersonSurName>String</j:PersonSurName>
+			<j:PersonSuffixName>String</j:PersonSuffixName>
+		</j:PersonName>
+		<j:Residence>
+			<j:LocationAddress>
+				<j:LocationCityName>String</j:LocationCityName>
+				<j:LocationCountyName>String</j:LocationCountyName>
+				<j:LocationStateCode.USPostalService>AZ</j:LocationStateCode.USPostalService>
+				<j:LocationPostalCodeID>
+					<j:ID>String</j:ID>
+				</j:LocationPostalCodeID>
+			</j:LocationAddress>
+		</j:Residence>
+	</j:Person>
+</NSOPRQuery>

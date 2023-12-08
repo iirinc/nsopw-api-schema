@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.it.ojp.gov/jxdm/3.0.2/proxy/xsd/1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:j="http://www.it.ojp.gov/jxdm/3.0.2">
+  <xsd:annotation>
+    <xsd:documentation>Proxy types that carry dictionary metadata and have XML data type simple contents.</xsd:documentation>
+  </xsd:annotation>
+  <xsd:import namespace="http://www.it.ojp.gov/jxdm/3.0.2" schemaLocation="../../../jxdm.xsd">
+    <xsd:annotation>
+      <xsd:documentation>The Global Justice XML Data Model.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:import>
+  <xsd:complexType name="string">
+    <xsd:annotation>
+      <xsd:documentation>A proxy structure that represents character strings in XML.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+        <xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+</xsd:schema>

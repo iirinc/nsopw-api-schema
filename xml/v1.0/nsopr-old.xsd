@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <xsd:schema xmlns:j="http://www.it.ojp.gov/jxdm/3.0.2" xmlns:sor="http://www.nsopr.org/xml/1" targetNamespace="http://www.nsopr.org/xml/1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import schemaLocation="http://www.it.ojp.gov/jxdm/3.0.2/jxdm.xsd" namespace="http://www.it.ojp.gov/jxdm/3.0.2" />
+      <xsd:element name="ZipCode" type="xsd:string" />
+      <xsd:element name="SexOffenderRegistry" type="sor:SexOffenderRegistryType" />
+      <xsd:complexType name="SexOffenderRegistryType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="j:PersonSurName" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="j:PersonGivenName" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="j:PersonMiddleName" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="j:PersonSuffixName" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="j:LocationStateCode.USPostalService" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="j:LocationCountyName" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="j:LocationCityName" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="sor:ZipCode" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="j:SubjectID" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="j:AlertInformationURLID" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>

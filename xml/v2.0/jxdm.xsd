@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:s="http://niem.gov/niem/structures/2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:nc="http://niem.gov/niem/niem-core/2.0" xmlns:j="http://niem.gov/niem/domains/jxdm/4.0" xmlns:i="http://niem.gov/niem/appinfo/2.0" targetNamespace="http://niem.gov/niem/domains/jxdm/4.0" version="1">
+	<xsd:annotation>
+		<xsd:appinfo>
+			<i:ConformantIndicator>true</i:ConformantIndicator>
+		</xsd:appinfo>
+	</xsd:annotation>
+	<xsd:import namespace="http://niem.gov/niem/structures/2.0" schemaLocation="structures.xsd"/>
+	<xsd:import namespace="http://niem.gov/niem/appinfo/2.0" schemaLocation="appinfo.xsd"/>
+	<xsd:import namespace="http://niem.gov/niem/niem-core/2.0" schemaLocation="niem-core.xsd"/>
+	<xsd:complexType name="RegisteredOffenderType">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="s:ComplexObjectType">
+				<xsd:sequence>
+					<xsd:element ref="nc:RoleOfPersonReference"/>
+					<xsd:element ref="j:RegisteredOffenderStatusIndicator"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="RegisteredOffenderStatusIndicator" type="xsd:boolean" nillable="true"/>
+	<xsd:element name="RegisteredSexOffender" type="j:RegisteredOffenderType" nillable="true"/>
+</xsd:schema>

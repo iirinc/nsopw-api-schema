@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:o="http://www.nsopr.org/xml/2/response" xmlns:ext="http://www.nsopr.org/xml/2/extension" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:j="http://niem.gov/niem/domains/jxdm/4.0" xmlns:nc="http://niem.gov/niem/niem-core/2.0" xmlns:i="http://niem.gov/niem/appinfo/2.0" targetNamespace="http://www.nsopr.org/xml/2/response" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.nsopr.org/xml/2/extension" schemaLocation="extensionSchema.xsd" />
+	<xs:import namespace="http://niem.gov/niem/domains/jxdm/4.0" schemaLocation="jxdm.xsd"/>
+	<xs:import namespace="http://niem.gov/niem/niem-core/2.0" schemaLocation="niem-core.xsd"/>
+	<xs:import namespace="http://niem.gov/niem/appinfo/2.0" schemaLocation="appinfo.xsd"/>
+	<xs:complexType name="NSOPRResponseType">
+		<xs:annotation>
+			<xs:documentation>Represent a response to a NSOPR Query</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="nc:Person" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="nc:Location" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="nc:DeviceVisitedWebsiteURI" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="nc:BinaryLocationURI" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="j:RegisteredSexOffender" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="nc:ResidenceAssociation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="nc:PersonEmploymentLocationAssociation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="ext:PersonSchoolLocationAssociation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="ext:OffenderURLAssociation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="ext:OffenderPictureURIAssociation" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="NSOPRResponse" type="o:NSOPRResponseType"/>
+</xs:schema>

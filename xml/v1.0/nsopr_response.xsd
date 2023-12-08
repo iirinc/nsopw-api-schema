@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2005 sp1 U (http://www.xmlspy.com) by Gary Morgan (Asynchrony Solutions Inc) -->
+<xs:schema xmlns:sor="http://www.nsopr.org/xml/1" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:j="http://www.it.ojp.gov/jxdm/3.0.2" targetNamespace="http://www.nsopr.org/xml/1" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.it.ojp.gov/jxdm/3.0.2" schemaLocation="constraint.xsd"/>
+	<xs:complexType name="NSOPROffenderType">
+		<xs:annotation>
+			<xs:documentation>Represents a Registered Offender from a particular state registry</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="j:RegisteredSexOffender"/>
+			<xs:element ref="sor:RegistryURL"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NSOPRResponseType">
+		<xs:annotation>
+			<xs:documentation>Represent a response to a NSOPRY Query</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="sor:NSOPROffender" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RegistryURLIDType">
+		<xs:annotation>
+			<xs:documentation>URL in a state registry for registered offender</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="j:IDType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="NSOPROffender" type="sor:NSOPROffenderType"/>
+	<xs:element name="RegistryURL" type="j:IDType"/>
+	<xs:element name="NSOPRResponse" type="sor:NSOPRResponseType"/>
+</xs:schema>

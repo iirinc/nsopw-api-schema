@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.it.ojp.gov/jxdm/3.0.2/proxy/usps_states/1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:usps="http://www.it.ojp.gov/jxdm/usps_states/1.0" xmlns:j="http://www.it.ojp.gov/jxdm/3.0.2">
+  <xsd:annotation>
+    <xsd:documentation>Proxy types that carry dictionary metadata and extend United States state and possession abbreviations from the United States Parcel Service (USPS).</xsd:documentation>
+  </xsd:annotation>
+  <xsd:import namespace="http://www.it.ojp.gov/jxdm/3.0.2" schemaLocation="../../../jxdm.xsd">
+    <xsd:annotation>
+      <xsd:documentation>The Global Justice XML Data Model.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:import>
+  <xsd:import namespace="http://www.it.ojp.gov/jxdm/usps_states/1.0" schemaLocation="../../../../usps_states/1.0/usps_states.xsd">
+    <xsd:annotation>
+      <xsd:documentation>United States state and possession abbreviations from the United States Postal Service (USPS).</xsd:documentation>
+    </xsd:annotation>
+  </xsd:import>
+  <xsd:complexType name="USStateCodeType">
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates states.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="usps:USStateCodeType">
+        <xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+</xsd:schema>

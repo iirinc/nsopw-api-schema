@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.it.ojp.gov/jxdm/usps_states/1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:annotation>
+    <xsd:documentation>United States state and possession abbreviations from the United States Postal Service (USPS).</xsd:documentation>
+  </xsd:annotation>
+  <xsd:simpleType name="USStateCodeType">
+    <xsd:annotation>
+      <xsd:documentation>A code list that enumerates states.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:token"/>
+  </xsd:simpleType>
+</xsd:schema>

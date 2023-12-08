@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w:wantList w:release="3.0.2" xmlns:w="http://gjxdmtools.gtri.gatech.edu/wantList/1">
+  <w:element w:prefix="j" w:name="Location" w:isReference="false"/>
+  <w:element w:prefix="j" w:name="LocationStateCode"
+    w:qualifier="USPostalService" w:isReference="false"/>
+  <w:element w:prefix="j" w:name="Person" w:isReference="false"/>
+  <w:element w:prefix="j" w:name="PersonName" w:isReference="false"/>
+  <w:element w:prefix="j" w:name="PersonSuffixName" w:isReference="false"/>
+  <w:element w:prefix="j" w:name="RegisteredSexOffender" w:isReference="false"/>
+  <w:element w:prefix="j" w:name="Residence" w:isReference="false"/>
+  <w:type w:prefix="j" w:name="AddressType" w:isRequested="false">
+    <w:elementInType w:prefix="j" w:name="LocationCityName" w:isReference="false"/>
+    <w:elementInType w:prefix="j" w:name="LocationCountyName" w:isReference="false"/>
+    <w:elementInType w:prefix="j" w:name="LocationPostalCodeID" w:isReference="false"/>
+    <w:elementInType w:prefix="j" w:name="LocationStateName" w:isReference="false"/>
+  </w:type>
+  <w:type w:prefix="j" w:name="IDType" w:isRequested="false">
+    <w:elementInType w:prefix="j" w:name="ID" w:isReference="false"/>
+  </w:type>
+  <w:type w:prefix="j" w:name="LocationType" w:isRequested="false">
+    <w:elementInType w:prefix="j" w:name="LocationAddress" w:isReference="false"/>
+  </w:type>
+  <w:type w:prefix="j" w:name="PersonNameType" w:isRequested="false">
+    <w:elementInType w:prefix="j" w:name="PersonGivenName" w:isReference="false"/>
+    <w:elementInType w:prefix="j" w:name="PersonMiddleName" w:isReference="false"/>
+    <w:elementInType w:prefix="j" w:name="PersonSurName" w:isReference="false"/>
+  </w:type>
+  <w:type w:prefix="j" w:name="PersonType" w:isRequested="false">
+    <w:elementInType w:prefix="j" w:name="PersonName" w:isReference="false"/>
+    <w:elementInType w:prefix="j" w:name="Residence" w:isReference="false"/>
+  </w:type>
+  <w:type w:prefix="j" w:name="RegisteredOffenderType" w:isRequested="false">
+    <w:elementInType w:prefix="j" w:name="RegisteredOffenderID" w:isReference="false"/>
+  </w:type>
+</w:wantList>

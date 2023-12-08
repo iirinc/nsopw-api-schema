@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2005 sp1 U (http://www.xmlspy.com) by Gary Morgan (Asynchrony Solutions Inc) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:j="http://www.it.ojp.gov/jxdm/3.0.2" targetNamespace="http://www.it.ojp.gov/jxdm/3.0.2/proxy/xsd/1.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:annotation>
+		<xsd:documentation>Proxy types that carry dictionary metadata and have XML data type simple contents.</xsd:documentation>
+	</xsd:annotation>
+	<xsd:complexType name="string">
+		<xsd:annotation>
+			<xsd:documentation>A proxy structure that represents character strings in XML.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<o:NSOPRResponse xmlns:o="http://www.nsopr.org/xml/2/response" xmlns:ext="http://www.nsopr.org/xml/2/extension" xmlns:j="http://niem.gov/niem/domains/jxdm/4.0" xmlns:nc="http://niem.gov/niem/niem-core/2.0" xmlns:s="http://niem.gov/niem/structures/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.nsopr.org/xml/2/response exchangeSchema.xsd">
+  <nc:Person s:id="P1">
+    <nc:PersonAlternateName nc:personNameCommentText="comments regarding kind of alias name">
+      <nc:PersonGivenName>Alias First Name</nc:PersonGivenName>
+      <nc:PersonMiddleName>Alias Middle Name</nc:PersonMiddleName>
+      <nc:PersonSurName>Alias Last Name</nc:PersonSurName>
+      <nc:PersonNameSuffixText>alias suffix</nc:PersonNameSuffixText>
+    </nc:PersonAlternateName>
+    <nc:PersonBirthDate><nc:Date>1901-12-25</nc:Date></nc:PersonBirthDate>
+    <nc:PersonName>
+      <nc:PersonGivenName>First Name</nc:PersonGivenName>
+      <nc:PersonMiddleName>Middle Name</nc:PersonMiddleName>
+      <nc:PersonSurName>Last Name</nc:PersonSurName>
+      <nc:PersonNameSuffixText>suffix</nc:PersonNameSuffixText>
+    </nc:PersonName>
+    <nc:PersonSexText>F</nc:PersonSexText>
+  </nc:Person>
+  <nc:Person s:id="P2">
+    <nc:PersonAlternateName>
+      <nc:PersonGivenName>Another Alias First Name</nc:PersonGivenName>
+      <nc:PersonMiddleName>Another Alias Middle Name</nc:PersonMiddleName>
+      <nc:PersonSurName>Another Alias Last Name</nc:PersonSurName>
+      <nc:PersonNameSuffixText>another alias suffix</nc:PersonNameSuffixText>
+    </nc:PersonAlternateName>
+    <nc:PersonAlternateName>
+      <nc:PersonGivenName>Even Another Alias First Name</nc:PersonGivenName>
+      <nc:PersonMiddleName>Even Another Alias Middle Name</nc:PersonMiddleName>
+      <nc:PersonSurName>Even Another Alias Last Name</nc:PersonSurName>
+      <nc:PersonNameSuffixText>even another alias suffix</nc:PersonNameSuffixText>
+    </nc:PersonAlternateName>
+    <nc:PersonBirthDate><nc:Date>1981-12-25</nc:Date></nc:PersonBirthDate>
+    <nc:PersonName>
+      <nc:PersonGivenName>Another First Name</nc:PersonGivenName>
+      <nc:PersonMiddleName>Another Middle Name</nc:PersonMiddleName>
+      <nc:PersonSurName>Another Last Name</nc:PersonSurName>
+      <nc:PersonNameSuffixText>another suffix</nc:PersonNameSuffixText>
+    </nc:PersonName>
+    <nc:PersonSexText>M</nc:PersonSexText>
+  </nc:Person>
+  <nc:Location s:id="LR1">
+    <nc:LocationAddress>
+	   <nc:StructuredAddress>
+		<nc:LocationStreet><nc:StreetFullText>1709 Washington Avenue</nc:StreetFullText></nc:LocationStreet>
+		<nc:LocationCityName>St. Louis</nc:LocationCityName>
+		<nc:LocationCountyName>St. Louis City</nc:LocationCountyName>
+		<nc:LocationStateUSPostalServiceCode>MO</nc:LocationStateUSPostalServiceCode>
+		<nc:LocationPostalCode>63103</nc:LocationPostalCode>
+	  </nc:StructuredAddress>
+   </nc:LocationAddress>
+    <nc:LocationTwoDimensionalGeographicCoordinate>
+      <nc:GeographicCoordinateLatitude>
+        <nc:LatitudeDegreeValue>0</nc:LatitudeDegreeValue>
+      </nc:GeographicCoordinateLatitude>
+      <nc:GeographicCoordinateLongitude>
+        <nc:LongitudeDegreeValue>0</nc:LongitudeDegreeValue>
+      </nc:GeographicCoordinateLongitude>
+    </nc:LocationTwoDimensionalGeographicCoordinate>
+  </nc:Location>
+  <nc:Location s:id="LR2">
+    <nc:LocationAddress>
+	   <nc:StructuredAddress>
+		<nc:LocationStreet><nc:StreetFullText>123 Elm Street</nc:StreetFullText></nc:LocationStreet>
+		<nc:LocationCityName>Kirkwood</nc:LocationCityName>
+		<nc:LocationCountyName>St. Louis</nc:LocationCountyName>
+		<nc:LocationStateUSPostalServiceCode>MO</nc:LocationStateUSPostalServiceCode>
+		<nc:LocationPostalCode>63122</nc:LocationPostalCode>
+	  </nc:StructuredAddress>
+   </nc:LocationAddress>
+    <nc:LocationTwoDimensionalGeographicCoordinate>
+      <nc:GeographicCoordinateLatitude>
+        <nc:LatitudeDegreeValue>0</nc:LatitudeDegreeValue>
+      </nc:GeographicCoordinateLatitude>
+      <nc:GeographicCoordinateLongitude>
+        <nc:LongitudeDegreeValue>0</nc:LongitudeDegreeValue>
+      </nc:GeographicCoordinateLongitude>
+    </nc:LocationTwoDimensionalGeographicCoordinate>
+  </nc:Location>
+  <nc:Location s:id="LS1">
+    <nc:LocationAddress>
+	  <nc:StructuredAddress>
+		<nc:LocationStreet><nc:StreetFullText>1801 Washington Avenue</nc:StreetFullText></nc:LocationStreet>
+		<nc:LocationCityName>St. Louis</nc:LocationCityName>
+		<nc:LocationCountyName>St. Louis City</nc:LocationCountyName>
+		<nc:LocationStateUSPostalServiceCode>MO</nc:LocationStateUSPostalServiceCode>
+		<nc:LocationPostalCode>63103</nc:LocationPostalCode>
+	  </nc:StructuredAddress>
+    </nc:LocationAddress>
+    <nc:LocationName>St. Nicholas School</nc:LocationName>
+  </nc:Location>
+  <nc:Location s:id="LS2">
+    <nc:LocationAddress>
+	  <nc:StructuredAddress>
+		<nc:LocationStreet><nc:StreetFullText>123 Main Street</nc:StreetFullText></nc:LocationStreet>
+		<nc:LocationCityName>Kirkwood</nc:LocationCityName>
+		<nc:LocationCountyName>St. Louis</nc:LocationCountyName>
+		<nc:LocationStateUSPostalServiceCode>MO</nc:LocationStateUSPostalServiceCode>
+		<nc:LocationPostalCode>63122</nc:LocationPostalCode>
+	  </nc:StructuredAddress>
+    </nc:LocationAddress>
+    <nc:LocationName>Kirkwood Police Academy</nc:LocationName>
+  </nc:Location>
+  <nc:Location s:id="LW1">
+    <nc:LocationAddress>
+	  <nc:StructuredAddress>
+		<nc:LocationStreet><nc:StreetFullText>321 Broadway</nc:StreetFullText></nc:LocationStreet>
+		<nc:LocationCityName>St. Louis</nc:LocationCityName>
+		<nc:LocationCountyName>St. Louis City</nc:LocationCountyName>
+		<nc:LocationStateUSPostalServiceCode>MO</nc:LocationStateUSPostalServiceCode>
+		<nc:LocationPostalCode>63101</nc:LocationPostalCode>
+	  </nc:StructuredAddress>
+    </nc:LocationAddress>
+    <nc:LocationName>Just Balloons, Inc.</nc:LocationName>
+  </nc:Location>
+  <nc:Location s:id="LW2">
+    <nc:LocationAddress>
+	  <nc:StructuredAddress>
+		<nc:LocationStreet><nc:StreetFullText>1701 Washington Avenue</nc:StreetFullText></nc:LocationStreet>
+		<nc:LocationCityName>St. Louis</nc:LocationCityName>
+		<nc:LocationCountyName>St. Louis City</nc:LocationCountyName>
+		<nc:LocationStateUSPostalServiceCode>MO</nc:LocationStateUSPostalServiceCode>
+		<nc:LocationPostalCode>63103</nc:LocationPostalCode>
+		<nc:LocationPostalExtensionCode>1716</nc:LocationPostalExtensionCode>
+	  </nc:StructuredAddress>
+    </nc:LocationAddress>
+    <nc:LocationName>Asynchrony Solutions, Inc.</nc:LocationName>
+  </nc:Location>
+  <nc:DeviceVisitedWebsiteURI s:id="U1">http://ruby-lang.org</nc:DeviceVisitedWebsiteURI>
+  <nc:DeviceVisitedWebsiteURI s:id="U2">http://python.org</nc:DeviceVisitedWebsiteURI>
+  <nc:BinaryLocationURI s:id="B1">http://www.larryharmonpictures.com/images/bozo.jpg</nc:BinaryLocationURI>
+  <nc:BinaryLocationURI s:id="B2">http://www.wallpaperbase.com/wallpapers/cartoons/spongebob/sponge_bob_2.jpg</nc:BinaryLocationURI>
+  <j:RegisteredSexOffender>
+    <nc:RoleOfPersonReference s:ref="P1" />
+    <j:RegisteredOffenderStatusIndicator>true</j:RegisteredOffenderStatusIndicator>
+  </j:RegisteredSexOffender>
+  <j:RegisteredSexOffender>
+    <nc:RoleOfPersonReference s:ref="P2" />
+    <j:RegisteredOffenderStatusIndicator>false</j:RegisteredOffenderStatusIndicator>
+  </j:RegisteredSexOffender>
+  <nc:ResidenceAssociation>
+    <nc:PersonReference s:ref="P1" />
+    <nc:LocationReference s:ref="LR1" />
+  </nc:ResidenceAssociation>
+  <nc:ResidenceAssociation>
+    <nc:PersonReference s:ref="P2" />
+    <nc:LocationReference s:ref="LR2" />
+  </nc:ResidenceAssociation>
+  <nc:PersonEmploymentLocationAssociation>
+    <nc:PersonReference s:ref="P1" />
+    <nc:LocationReference s:ref="LW1" />
+  </nc:PersonEmploymentLocationAssociation>
+  <nc:PersonEmploymentLocationAssociation>
+    <nc:PersonReference s:ref="P2" />
+    <nc:LocationReference s:ref="LW2" />
+  </nc:PersonEmploymentLocationAssociation>
+  <ext:PersonSchoolLocationAssociation>
+    <nc:PersonReference s:ref="P1" />
+    <nc:LocationReference s:ref="LS1" />
+  </ext:PersonSchoolLocationAssociation>
+  <ext:PersonSchoolLocationAssociation>
+    <nc:PersonReference s:ref="P2" />
+    <nc:LocationReference s:ref="LS2" />
+  </ext:PersonSchoolLocationAssociation>
+  <ext:OffenderURLAssociation>
+    <nc:PersonReference s:ref="P1" />
+    <nc:DeviceVisitedWebsiteURIReference s:ref="U1" />
+  </ext:OffenderURLAssociation>
+  <ext:OffenderURLAssociation>
+    <nc:PersonReference s:ref="P2" />
+    <nc:DeviceVisitedWebsiteURIReference s:ref="U2" />
+  </ext:OffenderURLAssociation>
+  <ext:OffenderPictureURIAssociation>
+    <nc:PersonReference s:ref="P1" />
+    <nc:BinaryLocationURIReference s:ref="B1" />
+  </ext:OffenderPictureURIAssociation>
+  <ext:OffenderPictureURIAssociation>
+    <nc:PersonReference s:ref="P2" />
+    <nc:BinaryLocationURIReference s:ref="B2" />
+  </ext:OffenderPictureURIAssociation>
+</o:NSOPRResponse>
