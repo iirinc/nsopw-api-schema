@@ -1,0 +1,2 @@
+# NSOPW JSON Schema v1.0
+This folder holds the query and response schemas to be used with NSOPW. This page also has some documentation on status codes but look at the samples folder for detailed information on doing queries.

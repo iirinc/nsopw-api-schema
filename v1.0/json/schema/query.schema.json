@@ -1,5 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://schema.nsopw.org/json/v1/query",
     "title": "NSOPW JSON Query Schema",
     "description": "Schema for NSOPW doing JSON Queries against jurisdictions services",
     "type": "object",
@@ -7,7 +8,8 @@
         "id": {
             "type": "string",
             "title": "Search ID",
-            "description": "ID of the search provided. Must be unique per search. This would be used for diagnostic issues to be able to track queries."
+            "description": "ID of the search provided. Must be unique per search. This would be used for diagnostic issues to be able to track queries.",
+            "examples": ["000000-0000-0000-00000000000"]
         },
         "jurisdictions": {
             "type": "array",
@@ -20,31 +22,45 @@
             "type": "integer",
             "minimum": 0,
             "title": "Maximum Results",
-            "description": "Maximum number of results to return. If more results found, return in status message. This number is per jurisdiction searched, not all of them combined.\n\nIf the number is equal to 0, the system would ignore the query values and return all records in the database. The system can call this once a day to cache the records incase there is an issue with the API connection. This is optional."
+            "description": "Maximum number of results to return. If more results found, return in status message. This number is per jurisdiction searched, not all of them combined.\n\nIf the number is equal to 0, the system would ignore the query values and return all records in the database. The system can call this once a day to cache the records incase there is an issue with the API connection. This is optional.",
+            "examples": [300],
+            "default": 300
         },
         "firstName": {
             "type": [
                 "string",
                 "null"
-            ]
+            ],
+            "title": "Offender First Name",
+            "description": "The first name (given name) of the offender.",
+            "examples": ["John"]
         },
         "lastName": {
             "type": [
                 "string",
                 "null"
-            ]
+            ],
+            "title": "Offender Last Name",
+            "description": "The last name (sur or family name) of the offender.",
+            "examples": ["Smith"]
         },
         "city": {
             "type": [
                 "string",
                 "null"
-            ]
+            ],
+            "title": "City",
+            "examples": ["Washington"],
+            "description": "The city to search for an offender."
         },
         "county": {
             "type": [
                 "string",
                 "null"
-            ]
+            ],
+            "title": "County",
+            "examples": ["Fairfax"],
+            "description": "The county to search for an offender."
         },
         "zips": {
             "type": [
@@ -54,29 +70,50 @@
             "items": {
                 "type": "string",
                 "minLength": 5,
-                "maxLength": 10
-            }
-        },
-        "longitude": {
-            "type": [
-                "number",
-                "null"
-            ]
+                "maxLength": 5,
+                "description": "Zip codes to search. Must not include Zip+4.",
+                "title": "Zip Code",
+                "examples": ["20001"]
+            },
+            "title": "Zip Codes",
+            "description": "Zip codes to search for offenders. May include up to 5.",
+            "maxItems": 5,
+            "minItems": 0
         },
         "latitude": {
             "type": [
                 "number",
                 "null"
-            ]
+            ],
+            "title": "Latitude of location",
+            "examples": [38.897957],
+            "description": "The latitude to search for an offender.",
+            "maximum": 90,
+            "minimum": -90
+        },
+        "longitude": {
+            "type": [
+                "number",
+                "null"
+            ],
+            "title": "Longitude",
+            "examples": [-77.03656],
+            "description": "The longitude to search for an offender.",
+            "maximum": 180,
+            "minimum": -180
         },
         "distance": {
             "type": [
                 "number",
                 "null"
-            ]
+            ],
+            "title": "Distance",
+            "examples": [3],
+            "description": "The distance in miles to search for an offender. This should be either 0.25, 0.5, 1, 2, or 3",
+            "minimum": 0.25,
+            "maximum": 3
         }
     },
-    "$id": "http:/schema.nsopw.org/json/v1/query",
     "required": [
         "maxResults",
         "jurisdictions"

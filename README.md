@@ -1,2 +1,2 @@
-# nsopw-api-schema
-API schemas used by NSOPW
+# NSOPW API Schema Documentation
+This is a repository of the NSOPW API/Web Service Schema Documentation. This hosts all the schemas used by NSOPW to interact with jurisdictions along with sample queries and responses.

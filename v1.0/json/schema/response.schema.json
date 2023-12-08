@@ -1,5 +1,8 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://schema.nsopw.org/json/v1/response",
+    "title": "NSOPW JSON Results Schema",
+    "description": "Schema for the results to a query made by NSOPW to a jurisdiction",
     "type": "object",
     "properties": {
         "id": {
@@ -305,9 +308,6 @@
             "description": "Name information of the offender"
         }
     },
-    "$id": "http:/schema.nsopw.org/json/v1/response",
-    "title": "NSOPW JSON Results Schema",
-    "description": "Schema for the results to a query made by NSOPW to a jurisdiction",
     "required": [
         "id",
         "statusCode",
