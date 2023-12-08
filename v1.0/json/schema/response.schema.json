@@ -4,6 +4,7 @@
     "title": "NSOPW JSON Results Schema",
     "description": "Schema for the results to a query made by NSOPW to a jurisdiction",
     "type": "object",
+    "additionalProperties": false,
     "properties": {
         "id": {
             "type": "string",
@@ -199,7 +200,8 @@
                     "name",
                     "offenderUri",
                     "jurisdictionId"
-                ]
+                ],
+                "additionalProperties": false
             },
             "title": "Offender Results",
             "description": "Array of offenders matched by the requested search"
@@ -241,7 +243,8 @@
                     "statusCode",
                     "records",
                     "jurisdictionId"
-                ]
+                ],
+                "additionalProperties": false
             },
             "title": "Jurisdiction Statuses",
             "description": "List of the jurisdictions searched, the status of their search, and records found."
@@ -305,7 +308,8 @@
             },
             "required": ["firstName"],
             "title": "Offender Name",
-            "description": "Name information of the offender"
+            "description": "Name information of the offender",
+            "additionalProperties": false
         }
     },
     "required": [

@@ -1,0 +1,53 @@
+{
+    "$schema": "https://raw.githubusercontent.com/iirinc/nsopw-api-schema/main/v1.0/json/schema/response.schema.json",
+    "id": "000000-0000-0000-00000000000",
+    "statusCode": 200,
+    "offenders": [
+      {
+        "id": "DC1000",
+        "name": {
+          "prefix": "Dr",
+          "firstName": "John",
+          "middleName": "Jacob",
+          "lastName": "Smith",
+          "suffix": "Jr"
+        },
+        "aliases": [
+          {
+            "prefix": "Dr",
+            "firstName": "John",
+            "middleName": "J",
+            "lastName": "Smith",
+            "suffix": "Jr"
+          }
+        ],
+        "gender": "M",
+        "dob": "1970-01-01",
+        "locations": [
+          {
+            "name": "The White House",
+            "type": "R",
+            "streetAddress": "1600 Pennsylvania Avenue NW",
+            "city": "Washington",
+            "county": "Fairfax",
+            "state": "DC",
+            "zipCode": "20500",
+            "zipCodeExtension": "0000",
+            "latitude": 38.897957,
+            "longitude": -77.03656
+          }
+        ],
+        "offenderUri": "http://www.somesite.net/offenderdetails.php?OfndrID=10720166&AgencyID=54150",
+        "imageUri": "https://www.somesite.net/offenders/offenderimage.jpg",
+        "absconder": false,
+        "jurisdictionId": "DC"
+      }
+    ],
+    "jurisdictionStatus": [
+      {
+        "jurisdictionId": "DC",
+        "statusCode": 200,
+        "records": 1
+      }
+    ]
+  }

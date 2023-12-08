@@ -4,11 +4,12 @@
     "title": "NSOPW JSON Query Schema",
     "description": "Schema for NSOPW doing JSON Queries against jurisdictions services",
     "type": "object",
+    "additionalProperties": false,
     "properties": {
         "id": {
             "type": "string",
-            "title": "Search ID",
-            "description": "ID of the search provided. Must be unique per search. This would be used for diagnostic issues to be able to track queries.",
+            "title": "Search Identifier",
+            "description": "This is a unique id of the search provided. This would be used for diagnostics and logging to track queries on the NSOPW site and potentially the jurisdiction side.",
             "examples": ["000000-0000-0000-00000000000"]
         },
         "jurisdictions": {
@@ -16,13 +17,13 @@
             "items": {"type": "string"},
             "minItems": 1,
             "title": "Jurisdictions To Search",
-            "description": "Array of jurisdictions to search. This normally would only be one jurisdiction but in the case where a system hosts multiple jurisdictions, it could allow for more being queried at once."
+            "description": "This is an array of jurisdictions to search. This normally would only be one jurisdiction but in the case where a system hosts multiple jurisdictions, it could allow for more being queried at once."
         },
         "maxResults": {
             "type": "integer",
             "minimum": 0,
             "title": "Maximum Results",
-            "description": "Maximum number of results to return. If more results found, return in status message. This number is per jurisdiction searched, not all of them combined.\n\nIf the number is equal to 0, the system would ignore the query values and return all records in the database. The system can call this once a day to cache the records incase there is an issue with the API connection. This is optional.",
+            "description": "This is the maximum number of results to return. If more records than this value are found, return a 511 in the status code for the jurisdiction. This number is per jurisdiction searched, not all of them combined.\n\nIf the number is equal to 0, the system would ignore the query values and return all records in the database. The system can call this once a day to cache the records incase there is an issue with the API connection.",
             "examples": [300],
             "default": 300
         },
@@ -31,8 +32,8 @@
                 "string",
                 "null"
             ],
-            "title": "Offender First Name",
-            "description": "The first name (given name) of the offender.",
+            "title": "First Name",
+            "description": "The first name (given name) of the offender to search.",
             "examples": ["John"]
         },
         "lastName": {
@@ -40,8 +41,8 @@
                 "string",
                 "null"
             ],
-            "title": "Offender Last Name",
-            "description": "The last name (sur or family name) of the offender.",
+            "title": "Last Name",
+            "description": "The last name (sur or family name) of the offender to search.",
             "examples": ["Smith"]
         },
         "city": {
@@ -85,7 +86,7 @@
                 "number",
                 "null"
             ],
-            "title": "Latitude of location",
+            "title": "Latitude",
             "examples": [38.897957],
             "description": "The latitude to search for an offender.",
             "maximum": 90,
