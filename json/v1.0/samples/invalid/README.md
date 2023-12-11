@@ -44,10 +44,40 @@ For a name search, you must submit a first and last name to work.
 - [Results](103/response.json)
 
 ## Invalid Characters - Status Code 109
-Invalid characters in the search were found.
+Invalid characters in the search were found. 
 
 - [Query](109/query.json) 
 - [Results](109/response.json)
+
+Currently the system will reject queries with the following characters:
+
+- !
+- @
+- \#
+- $
+- %
+- ^
+- &
+- \*
+- (
+- )
+- :
+- ;
+- \
+- /
+- <
+- \>
+- \+
+- =
+- ?
+- [
+- ]
+- {
+- }
+- |
+- \
+- _
+- \-\-
 
 ## Too Many Characters in a Search Field - Status Code 111
 There are too many characters in either first name, last name, city, or county. The maximum number of characters per field allowed is 50.
