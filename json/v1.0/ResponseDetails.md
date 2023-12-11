@@ -2,6 +2,7 @@
 This is an overview of the response that would be expected from the NSOPW system.
 
 - [Response](#response)
+  - [Response Time](#response-time)
   - [Validation Messages](#validation-messages)
     - [Primary Status Code](#primary-status-code)
       - [HTTP 200 - OK](#http-200---ok)
@@ -16,6 +17,12 @@ This is an overview of the response that would be expected from the NSOPW system
       - [Location](#location)
     - [Jurisdiction Status](#jurisdiction-status)
 
+## Response Time
+The system expects that when it queries a jurisdiction, the jurisdiction will respond within 15 seconds. If the jurisdiction doesn't respond within 15 seconds, the system closes the connection and flags the jurisdiction as timing out. If the system notices too many time out within a period of time, the system will remove the jurisdiction from being queried by the public for 5 minutes. After 5 minutes, the system will test to see if a search for the jurisdiction is completed within 15 seconds or not. If it does, the system brings the jurisdiction back online for the public to search. If not, it will try again in 5 minutes.
+
+This keeps the public from having to wait a long time for their results and not to slow down all the other searches due to one jurisdiction having issues.
+
+If a jurisdiction is offline for more than 30 minutes, an automated email will be sent to the contacts on file letting them know.
 
 ## Validation Messages
 These are the messages that should be returned by your API based on different statuses. 
