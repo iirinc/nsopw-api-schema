@@ -21,14 +21,14 @@ This is a [JSON schema](https://json-schema.org/) interaction using a [RESTful](
 
 - [Version 1.0](json/v1.0/README.md)
   - **Query** - This is what the jurisdiction's API should expect from NSOPW.
-    - [Query Details](QueryDetails.md) - Detailed information on how queries are structured and their rules.
-    - [Query Schema](schema/query.schema.json) - JSON schema for how a jurisdiction should expect a query to be formatted. 
+    - [Query Details](json/v1.0/QueryDetails.md) - Detailed information on how queries are structured and their rules.
+    - [Query Schema](json/v1.0/schema/query.schema.json) - JSON schema for how a jurisdiction should expect a query to be formatted. 
   - **Response** - This is what NSOPW will expect from the jurisdiction's API.
-    - [Response Details](ResponseDetails.md) - Detailed information on how the results are structured and their rules.
-    - [Response Schema](schema/response.schema.json) - JSON schema for what NSOPW will expect from the jurisdiction
+    - [Response Details](json/v1.0/ResponseDetails.md) - Detailed information on how the results are structured and their rules.
+    - [Response Schema](json/v1.0/schema/response.schema.json) - JSON schema for what NSOPW will expect from the jurisdiction
   - **Samples** - Samples of different queries
-    - [Valid Queries](samples/valid/README.md) - Samples of valid queries and their responses.
-    - [Invalid Queries](samples/invalid/README.md) - Samples of invalid queries and their responses.
+    - [Valid Queries](json/v1.0/samples/valid/README.md) - Samples of valid queries and their responses.
+    - [Invalid Queries](json/v1.0/samples/invalid/README.md) - Samples of invalid queries and their responses.
 
 ## XML
 This is [XML schemas](https://en.wikipedia.org/wiki/XML_schema) for interaction using [web services](https://en.wikipedia.org/wiki/Web_service). This is no longer the prefered method and is being phased out. A [JSON](#json) based service is the new prefered method.
