@@ -5,11 +5,14 @@ This is an overview of the response that would be expected from the NSOPW system
   - [Validation Messages](#validation-messages)
     - [Primary Status Code](#primary-status-code)
       - [HTTP 200 - OK](#http-200---ok)
-        - [Status MessagePer Jurisdiction](#status-messageper-jurisdiction)
+        - [Status Message Per Jurisdiction](#status-message-per-jurisdiction)
       - [HTTP 422 - Validation Error](#http-422---validation-error)
       - [HTTP 429 - Too many requests](#http-429---too-many-requests)
       - [HTTP 500 - Internal Server Error](#http-500---internal-server-error)
       - [HTTP 503 - Service Unavailable](#http-503---service-unavailable)
+  - [Property Definitions](#property-definitions)
+    - [Offender](#offender)
+    - [Jurisdiction Status](#jurisdiction-status)
 
 
 ## Validation Messages
@@ -26,7 +29,7 @@ On a succesful query, return a [HTTP 200](https://developer.mozilla.org/en-US/do
 - **200** - Sucessful search.
 - **201** - Sucessful search but the jurisdictions passed in the query do not match the jurisdiction that responded. 
 
-##### Status MessagePer Jurisdiction
+##### Status Message Per Jurisdiction
 In addition to the base `statusCode`, within the `jurisdictionStatus` array, per juridiction query you would need to return an additional `statusCode`. This is a list of what these values should be.
 
 - **200** - Successful Search
@@ -64,3 +67,47 @@ If the jurisdiction's API has an unhandled exception, return a [HTTP 500](https:
 
 #### HTTP 503 - Service Unavailable
 If the API is unavilable, return a [HTTP 503](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503). No response would be expected in the body.
+
+## Property Definitions
+This is an overview of the properties within a response. These are all defined in the [schema](schema/response.schema.json) file as well.
+
+| Field | Title | Type | Is Required | Description | Example |
+|-------|-------|------|-------------|-------------|---------|
+| `id` | Search Identifier | String | No | This is a unique id of the search provided. This would be used for diagnostics and logging to track queries on the NSOPW site and potentially the jurisdiction side. | 000000-0000-0000-00000000000 |
+| `statusCode` | Status Code | Integer | Yes | This is the status of the whole search as detailed in [primary status code](#primary-status-code) | 200 |
+| `offenders` | Offenders | Array of [Offender](#offender) | No | This is an array of offenders that match the search | | 
+| `jurisdictionStatus` | Jurisdiction Status | Array of [Jurisdiction Status](#jurisdiction-status) | Yes if search is successful | This is an array of jurisdictions that were searched along with their status | |
+
+### Offender
+This is an overview of the properties of an offender.
+
+| Field | Title | Type | Is Required | Description | Example |
+|-------|-------|------|-------------|-------------|---------|
+| `id` | Identifier | String | No | Identifier of the offender | FL100 |
+| `name` | Primary Name | Name | Yes | Primary name information of the offender | | 
+| `aliases` | Aliases | Array of Name | No | Any aliases of the offender | |
+| `gender` | Gender | String | No | THe gender of the offender. Either M for Male, F for Female, or U for Other/Unknown | F |
+| `dob` | Date of Birth | Date | No | The date of birth of the offender formatted in YYYY-MM-dd | 1970-01-01 |
+| `locations` | Locations | Array of Location | No | Array of locations/addresses of the offender | |
+| `offenderUri` | Uri to Offender Record | String | Yes | A uri to view more information about the offender on the jurisdiction's website | https://www.somesite.net/offenderdetails.php?OfndrID=10720166&AgencyID=54150 |
+| `imageUri` | Uri to Offender Image | String | No | A uri to a thumbnail of the offender available on the jurisdiction's website | https://www.somesite.net/offenders/offenderimage.jpg |
+| `absconder` | Absconder | True/False | No | Boolean indicating if the offender is absconded or not. | false |
+| `jurisdictionId` | Offender Jurisdiction Identifier | String | Yes | Identifier of the jurisdiction from which the offender is from. | GA |
+
+#### Name
+This is an overview of the properties of a name.
+
+| Field | Title | Type | Is Required | Description | Example |
+|-------|-------|------|-------------|-------------|---------|
+| `prefix` | Name Prefix | String | No | The prefix of the offender's name. | Dr. |
+| `firstName`
+
+### Jurisdiction Status
+This is an overview of the properties of a jurisdiction status.
+
+| Field | Title | Type | Is Required | Description | Example |
+|-------|-------|------|-------------|-------------|---------|
+| `jurisdictionId` | Jurisdiction Identifier | String | Yes | Identifier for the jurisdiction searched. | DC |
+| `statusCode` | Status Code | Integer | Yes | This is the status of the single jurisdiction as detailed [above](#status-message-per-jurisdiction) | 200 |
+| `records` | Records Found | Integer | Yes | This is the number of records found per jurisdiction | 2 |
+| `message` | Message | String | No | Any additional information to pass about the search results such as errors. | |

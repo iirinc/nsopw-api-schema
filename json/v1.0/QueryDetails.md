@@ -9,13 +9,13 @@ This is an overview of the query that you would be receiving from the NSOPW syst
     - [Geolocation Search](#geolocation-search)
     - [All Results](#all-results)
 - [Jurisdiction](#jurisdiction)
-  - [States and Territories](#states-and-territories)
+  - [States](#states)
   - [Territories](#territories)
   - [Tribal](#tribal)
 
 
 ## Property Definitions
-This is an overview of the properties within a query. These are all defined in the [schema](query.schema.json) file as well.
+This is an overview of the properties within a query. These are all defined in the [schema](schema/query.schema.json) file as well.
 
 | Field | Title | Type | Is Required | Description | Example |
 |-------|-------|------|-------------|-------------|---------|
@@ -83,7 +83,7 @@ There is an optional query that doesn't have to be supported by your jurisdiciti
 # Jurisdiction
 This is a list of the jurisdiction identifier and the name of the jurisdiction.
 
-## States and Territories
+## States
 
 | Identifier | Name |
 |------------|------|
