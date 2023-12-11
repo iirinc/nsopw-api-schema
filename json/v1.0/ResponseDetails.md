@@ -12,6 +12,8 @@ This is an overview of the response that would be expected from the NSOPW system
       - [HTTP 503 - Service Unavailable](#http-503---service-unavailable)
   - [Property Definitions](#property-definitions)
     - [Offender](#offender)
+      - [Name](#name)
+      - [Location](#location)
     - [Jurisdiction Status](#jurisdiction-status)
 
 
@@ -71,6 +73,61 @@ If the API is unavilable, return a [HTTP 503](https://developer.mozilla.org/en-U
 ## Property Definitions
 This is an overview of the properties within a response. These are all defined in the [schema](schema/response.schema.json) file as well.
 
+```json
+{
+  "id": "000000-0000-0000-00000000000",
+  "statusCode": 200,
+  "offenders": [
+    {
+      "id": "DC1000",
+      "name": {
+        "prefix": "Dr",
+        "firstName": "John",
+        "middleName": "Jacob",
+        "lastName": "Smith",
+        "suffix": "Jr"
+      },
+      "aliases": [
+        {
+          "prefix": "Dr",
+          "firstName": "John",
+          "middleName": "J",
+          "lastName": "Smith",
+          "suffix": "Jr"
+        }
+      ],
+      "gender": "M",
+      "dob": "1970-01-01",
+      "locations": [
+        {
+          "name": "The White House",
+          "type": "R",
+          "streetAddress": "1600 Pennsylvania Avenue NW",
+          "city": "Washington",
+          "county": "Fairfax",
+          "state": "DC",
+          "zipCode": "20500-0000",
+          "latitude": 38.89795,
+          "longitude": -77.03656
+        }
+      ],
+      "offenderUri": "http://www.somesite.net/offenderdetails.php?OfndrID=10720166&AgencyID=54150",
+      "imageUri": "https://www.somesite.net/offenders/offenderimage.jpg",
+      "absconder": false,
+      "jurisdictionId": "DC"
+    }
+  ],
+  "jurisdictionStatus": [
+    {
+      "jurisdictionId": "DC",
+      "statusCode": 200,
+      "records": 1
+    }
+  ]
+}
+```
+
+
 | Field | Title | Type | Is Required | Description | Example |
 |-------|-------|------|-------------|-------------|---------|
 | `id` | Search Identifier | String | No | This is a unique id of the search provided. This would be used for diagnostics and logging to track queries on the NSOPW site and potentially the jurisdiction side. | 000000-0000-0000-00000000000 |
@@ -83,31 +140,48 @@ This is an overview of the properties of an offender.
 
 | Field | Title | Type | Is Required | Description | Example |
 |-------|-------|------|-------------|-------------|---------|
-| `id` | Identifier | String | No | Identifier of the offender | FL100 |
-| `name` | Primary Name | Name | Yes | Primary name information of the offender | | 
-| `aliases` | Aliases | Array of Name | No | Any aliases of the offender | |
-| `gender` | Gender | String | No | THe gender of the offender. Either M for Male, F for Female, or U for Other/Unknown | F |
+| `id` | Identifier | String | No | Identifier of the offender | DC1000 |
+| `name` | Primary Name | [Name](#name) | Yes | Primary name information of the offender | | 
+| `aliases` | Aliases | Array of [Name](#name) | No | Any aliases of the offender | |
+| `gender` | Gender | String | No | THe gender of the offender. Either M for Male, F for Female, or U for Other/Unknown | M |
 | `dob` | Date of Birth | Date | No | The date of birth of the offender formatted in YYYY-MM-dd | 1970-01-01 |
-| `locations` | Locations | Array of Location | No | Array of locations/addresses of the offender | |
+| `locations` | Locations | Array of [Location](#location) | No | Array of locations/addresses of the offender | |
 | `offenderUri` | Uri to Offender Record | String | Yes | A uri to view more information about the offender on the jurisdiction's website | https://www.somesite.net/offenderdetails.php?OfndrID=10720166&AgencyID=54150 |
 | `imageUri` | Uri to Offender Image | String | No | A uri to a thumbnail of the offender available on the jurisdiction's website | https://www.somesite.net/offenders/offenderimage.jpg |
 | `absconder` | Absconder | True/False | No | Boolean indicating if the offender is absconded or not. | false |
-| `jurisdictionId` | Offender Jurisdiction Identifier | String | Yes | Identifier of the jurisdiction from which the offender is from. | GA |
+| `jurisdictionId` | Offender [Jurisdiction Identifier](QueryDetails.md#jurisdiction) | String | Yes | Identifier of the jurisdiction from which the offender is from. | DC |
 
 #### Name
 This is an overview of the properties of a name.
 
 | Field | Title | Type | Is Required | Description | Example |
 |-------|-------|------|-------------|-------------|---------|
-| `prefix` | Name Prefix | String | No | The prefix of the offender's name. | Dr. |
-| `firstName`
+| `prefix` | Prefix | String | No | The prefix of the offender's name. | Dr |
+| `firstName` | First Name | String | Yes | The first name (given name) of the offender. | John |
+| `middleName` | Middle Name | String | No | The middle name or initial of the offender. | J | 
+| `lastName` | Last Name | String | No | The last name (sur or family name) of the offender. | Smith |
+| `suffix` | Suffix | String | No | The suffix of the offender's name. | Jr |
+
+#### Location
+This is an overview of the properties of a location
+| Field | Title | Type | Is Required | Description | Example |
+|-------|-------|------|-------------|-------------|---------|
+| `name` | Location's Name | String | No | Name of the location such as company or school name. | The White House |
+| `type` | Location Type | String | Yes | The type of address of the offender's location. <ul><li>R = Residence</li><li>S = School</li><li>E = Employment/Work</li></ul> | R |
+| `streetAddress` | Street Address | String | No | The street address of the offender's address including number and direction. | 1600 Pennsylvania Avenue NW |
+| `city` | City | String | No | The city of the offender's location. | Washington |
+| `county` | County | String | No | The county of the offender's location. | Fairfax |
+| `state` | State | String | No | Two letter [USPS State Abbreviation](https://faq.usps.com/s/article/What-are-the-USPS-abbreviations-for-U-S-states-and-territories) for the state or territory | DC |
+| `zipCode` | Zip Code | String | No | Zip Code of the offender. Can include [Zip+4](https://en.wikipedia.org/wiki/ZIP_Code#ZIP+4). | 20500-0000 |
+| `latitude` | Latitude | Number | No | The latitude of the offender's location in [decimal degrees](https://en.wikipedia.org/wiki/Decimal_degrees). 5 decimal places at a minimum would be prefered for accuracy.  | 38.89795 |
+| `longitude` | Longitude | Number | No | The longitude of the offender's location in [decimal degrees](https://en.wikipedia.org/wiki/Decimal_degrees). 5 decimal places at a minimum would be prefered for accuracy. | -77.03656 |
 
 ### Jurisdiction Status
 This is an overview of the properties of a jurisdiction status.
 
 | Field | Title | Type | Is Required | Description | Example |
 |-------|-------|------|-------------|-------------|---------|
-| `jurisdictionId` | Jurisdiction Identifier | String | Yes | Identifier for the jurisdiction searched. | DC |
+| `jurisdictionId` | [Jurisdiction Identifier](QueryDetails.md#jurisdiction) | String | Yes | Identifier for the jurisdiction searched. | DC |
 | `statusCode` | Status Code | Integer | Yes | This is the status of the single jurisdiction as detailed [above](#status-message-per-jurisdiction) | 200 |
 | `records` | Records Found | Integer | Yes | This is the number of records found per jurisdiction | 2 |
 | `message` | Message | String | No | Any additional information to pass about the search results such as errors. | |
