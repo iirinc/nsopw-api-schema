@@ -6,6 +6,10 @@
     "type": "object",
     "additionalProperties": false,
     "properties": {
+        "$schema": {
+            "title": "Schema Path",
+            "description": "This is only available so if you include the $schema in the JSON it still validates. This will be removed in future versions as we update the base schema documentation versoin."
+        },
         "id": {
             "type": "string",
             "title": "Search Identifier",

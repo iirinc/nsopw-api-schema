@@ -9,7 +9,7 @@ This is a repository of the [NSOPW](https://www.nsopw.gov) API/Web Service Schem
   - [File Upload](#file-upload)
 
 # Overview
-The NSOPW system has the ability to query jurisidictions for sex offender information by a few different methodologies. The prefered method is via an [API](json/v1.0/README.md)/[web service](xml/v2.0/). This allows the public to have the most accurate data as it is live. Another option is for jurisdictions to daily [upload files](text/v2.0/README.md) to the system via SFTP. 
+The NSOPW system has the ability to query jurisidictions for sex offender information by a few different methodologies. The prefered method is via an [API](json/v1.0/README.md)/[web service](xml/v2.0/). This allows the public to have the most accurate data as it is live. Another option is for jurisdictions to daily [upload files](text/v2.0/README.md) to the system via [SFTP](https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol). 
 
 When the public makes a search on the NSOPW site, the queries are handed to a back end process that then queries each individual jurisdiction for the potentially matching sex offender data, queries the database of the uploaded offender data, then combines it and returns it to the public.
 
