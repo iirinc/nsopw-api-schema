@@ -17,6 +17,24 @@ This is an overview of the query that you would be receiving from the NSOPW syst
 ## Property Definitions
 This is an overview of the properties within a query. These are all defined in the [schema](schema/query.schema.json) file as well.
 
+```json
+{
+    "id": "000000-0000-0000-00000000000",
+    "maxResults": 300,
+    "firstName": "john",
+    "lastName": "smith",
+    "city": null,
+    "county": null,
+    "zips": null,
+    "longitude": null,
+    "latitude": null,
+    "distance": null,
+    "jurisdictions": [
+        "DC"
+    ]
+}
+```
+
 | Field | Title | Type | Is Required | Description | Example |
 |-------|-------|------|-------------|-------------|---------|
 | `id` | Search Identifier | String | No | This is a unique id of the search provided. This would be used for diagnostics and logging to track queries on the NSOPW site and potentially the jurisdiction side. | 000000-0000-0000-00000000000 |
