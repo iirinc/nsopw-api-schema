@@ -37,7 +37,8 @@ Registration jurisdictions should upload a single JSON file with all the offende
             "latitude": 38.89795,
             "longitude": -77.03656
             }
-        ]
+        ],
+        "md5": ""
     },
     {
         // Next offender
@@ -59,6 +60,7 @@ This is an overview of the properties of an offender.
 | `url` | Uri to Offender Record | String | Yes | A uri to view more information about the offender on the jurisdiction's website | https://www.somesite.net/offenderdetails.php?OfndrID=10720166&AgencyID=54150 |
 | `thumbnail` | Uri to Offender Image | String | No | A uri to a thumbnail of the offender available on the jurisdiction's website | https://www.somesite.net/offenders/offenderimage.jpg |
 | `isAbsconder` | Absconder | True/False | No | Boolean indicating if the offender is absconded or not. | false |
+| `md5` | MD5 Hash | String | No | Optional MD5 hash of the offender record to assure no information has been changed | |
 
 #### Name
 This is an overview of the properties of a name.
